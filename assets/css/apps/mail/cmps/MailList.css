@@ -1,1 +1,4 @@
- /* mail list */
+/* mail list */
+.list-container {
+  list-style-type: none;
+}
