@@ -1,3 +1,3 @@
 export function NoteIndex() {
-  return <div>note app!!!!!</div>
+    return <div>note app!!!!!</div>
 }
