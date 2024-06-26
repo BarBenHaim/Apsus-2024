@@ -1,6 +1,7 @@
 /* note index */
 
 .note-index {
+    font-family: Roboto;
     display: grid;
     grid-template-columns: 2fr 7fr 1fr;
     gap: 15px;
