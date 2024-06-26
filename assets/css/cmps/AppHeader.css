@@ -10,7 +10,7 @@ header {
 }
 
 nav a {
-    margin: .5em;
+    margin: 0.5em;
 }
 
 nav a:active {
@@ -21,4 +21,33 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.logo {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 400;
+}
+
+.app-header h3 span:nth-child(1) {
+    color: #4285f4;
+}
+
+.app-header h3 span:nth-child(2) {
+    color: #ea4335;
+}
+
+.app-header h3 span:nth-child(3) {
+    color: #fbbc05;
+}
+
+.app-header h3 span:nth-child(4) {
+    color: #34a853;
+}
+
+.app-header h3 span:nth-child(5) {
+    color: #4285f4;
+}
+
+.app-header nav a {
+    margin-right: 15px;
 }

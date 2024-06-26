@@ -1,3 +1,8 @@
 :root {
     --main-bg-color: lightblue;
+
+    /* NOTE COLORS */
+    --note-main-clr: #ffeb3b;
+    --note-secondary-clr: #e0e0e0;
+    --note-txt-clr: #616161;
 }
