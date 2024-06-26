@@ -7,8 +7,9 @@ export function AppHeader() {
                 <h3 className='logo'>
                     <span>A</span>
                     <span>p</span>
+                    <span>p</span>
                     <span>s</span>
-                    <span>o</span>
+                    <span>u</span>
                     <span>s</span>
                 </h3>
             </Link>

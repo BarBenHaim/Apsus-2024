@@ -24,8 +24,7 @@ nav a.active {
 }
 
 .logo {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 400;
+    font-family: Roboto;
 }
 
 .app-header h3 span:nth-child(1) {
@@ -37,7 +36,7 @@ nav a.active {
 }
 
 .app-header h3 span:nth-child(3) {
-    color: #fbbc05;
+    color: #fbbd05;
 }
 
 .app-header h3 span:nth-child(4) {
@@ -46,6 +45,10 @@ nav a.active {
 
 .app-header h3 span:nth-child(5) {
     color: #4285f4;
+}
+
+.app-header h3 span:nth-child(6) {
+    color: #ea4335;
 }
 
 .app-header nav a {
