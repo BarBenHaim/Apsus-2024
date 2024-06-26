@@ -1,0 +1,27 @@
+.filter-container {
+  background-color: #f6f8fc;
+}
+
+.search-mail {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.search-mail input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 27px;
+  text-align: start;
+  color: #000000;
+  background-color: #eaf1fb;
+  border-radius: 24px;
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  cursor: pointer;
+  outline: none;
+}

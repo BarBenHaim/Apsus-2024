@@ -8,9 +8,14 @@ let gMails = _createMails()
 
 export const mailService = {
   query,
+  remove,
 }
 function query() {
   return storageService.query(MAIL_KEY).then()
+}
+
+function remove(mailId) {
+  return storageService.remove(MAIL_KEY, mailId)
 }
 
 function _createMails() {

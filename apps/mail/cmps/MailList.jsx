@@ -1,11 +1,11 @@
 import { MailPreview } from './MailPreview.jsx'
 
-export function MailList({ mails }) {
+export function MailList({ mails, onRemoveMail }) {
   return (
-    <ul className="mail-list">
+    <ul className="list-container">
       {mails.map((mail) => (
         <li key={mail.id}>
-          <MailPreview mail={mail} />
+          <MailPreview mail={mail} onRemoveMail={onRemoveMail} />
         </li>
       ))}
     </ul>

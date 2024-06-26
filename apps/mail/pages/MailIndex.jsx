@@ -3,6 +3,7 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailDetails } from './MailDetails.jsx'
 
 import { mailService } from '../services/mail.service.js'
+import { MailFolder } from '../cmps/MailFolderList.jsx'
 
 const { useState, useEffect } = React
 
@@ -16,10 +17,23 @@ export function MailIndex() {
     })
   }, [])
 
+  function onRemoveMail(mailId) {
+    mailService
+      .remove(mailId)
+      .then(() => {
+        setMails((prevMail) => prevMail.filter((mail) => mail.id !== mailId))
+      })
+      .catch((err) => {
+        console.log('err:', err)
+      })
+  }
+
   if (!mails) return <div>Loading...</div>
   return (
-    <section>
-      <MailList mails={mails} />
+    <section className="main-layout">
+      <MailFilter />
+      <MailFolder />
+      <MailList mails={mails} onRemoveMail={onRemoveMail} />
     </section>
   )
 }

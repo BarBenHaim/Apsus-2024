@@ -24,3 +24,8 @@
 
 @import './apps/mail/cmps/MailList.css';
 @import './apps/mail/cmps/MailPreview.css';
+@import './apps/mail/cmps/MailFilter.css';
+@import './apps/mail/cmps/MailFolder.css';
+
+/* MAIL-LAYOUT */
+@import './apps/mail/layout/main-layout.css';
