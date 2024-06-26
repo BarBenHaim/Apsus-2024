@@ -1,7 +1,34 @@
+import { mailService } from '../services/mail.service.js'
+
+const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouterDOM
+
 export function MailDetails() {
-    return (
-        <section>
-            <h1>Email details</h1>
-        </section>
-    )
+  const [mail, setMail] = useState(null)
+  const params = useParams()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    loadMail()
+  }, [params.mailId])
+
+  function loadMail() {
+    mailService
+      .get(params.mailId)
+      .then(setMail)
+      .catch((err) => {
+        console.error('err:', err)
+        showErrorMsg('Cannot load Mail')
+        navigate('/mail')
+      })
+  }
+  if (!mail) return <div>Loading...</div>
+  return (
+    <section className="mail-details">
+      <h1>{mail.from}</h1>
+      <p>{mail.subject}</p>
+      <p>{mail.body}</p>
+      <p>{mail.sentAt}</p>
+    </section>
+  )
 }

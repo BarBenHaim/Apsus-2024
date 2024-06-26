@@ -1,4 +1,4 @@
-.main-layout {
+.mail-layout {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 0.5fr 5fr;
