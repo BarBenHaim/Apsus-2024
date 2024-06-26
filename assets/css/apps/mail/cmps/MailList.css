@@ -1,1 +1,5 @@
- /* mail list */
+/* mail list */
+.mail-list {
+  /* background-co/lor: aqua; */
+  list-style-type: none;
+}
