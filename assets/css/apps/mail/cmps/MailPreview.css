@@ -18,3 +18,8 @@
 .mail-preview:hover {
   box-shadow: rgba(100, 121, 143, 0.12) 0px -2px 0px 0px inset;
 }
+
+.mail-preview .unread {
+  background-color: white;
+  font-weight: bold;
+}

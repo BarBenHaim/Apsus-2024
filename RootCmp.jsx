@@ -1,6 +1,7 @@
 const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
+import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
 import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { NoteEdit } from './apps/note/cmps/NoteEdit.jsx'
 import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
@@ -17,6 +18,7 @@ export function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/mail' element={<MailIndex />} />
+                    <Route path='/mail/:mailId' element={<MailDetails />} />
                     <Route path='/note' element={<NoteIndex />}>
                         <Route path='/note/edit/:noteId' element={<NoteEdit />} />
                         <Route path='/note/:noteId' element={<NoteEdit />} />
