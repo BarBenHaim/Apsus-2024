@@ -1,1 +1,21 @@
 /* note list */
+
+.note-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.note {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 15px;
+    cursor: pointer;
+    transition: scale 0.4s ease;
+    height: fit-content;
+    width: fit-content;
+}
+
+.note:hover {
+    scale: 1.01;
+}

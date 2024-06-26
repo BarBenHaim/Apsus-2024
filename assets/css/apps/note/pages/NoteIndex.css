@@ -1,1 +1,7 @@
- /* note index */
+/* note index */
+
+.note-index {
+    display: grid;
+    grid-template-columns: 2fr 7fr 1fr;
+    gap: 15px;
+}

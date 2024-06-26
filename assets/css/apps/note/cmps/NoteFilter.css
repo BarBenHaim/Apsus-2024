@@ -1,0 +1,19 @@
+.btn-filter {
+    border: none;
+    display: flex;
+    padding: 15px;
+    margin-block-start: 10px;
+    border-end-end-radius: 20px;
+    border-start-end-radius: 20px;
+    justify-self: start;
+    cursor: pointer;
+    background: none;
+}
+
+.btn-filter:hover {
+    background-color: #f1f3f4;
+}
+
+.btn-filter:active {
+    background-color: #feefc3;
+}
