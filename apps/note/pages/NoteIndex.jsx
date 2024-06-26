@@ -3,18 +3,28 @@ import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.servic
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
+import { NoteSearchFilter } from '../cmps/NoteSearchFilter.jsx'
 import { noteService } from '../services/note.service.js'
 
 const { useEffect, useState } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [filterBy])
+
+    function onSetFilterBy(txt) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...txt }))
+    }
+
+    // function loadNotes() {
+    //     noteService.query().then(setNotes)
+    // }
 
     function loadNotes() {
-        noteService.query().then(setNotes)
+        noteService.query(filterBy).then(setNotes)
     }
 
     function addNote(note) {
@@ -22,10 +32,10 @@ export function NoteIndex() {
             .save(note)
             .then(savedNote => {
                 setNotes(prevNotes => [...prevNotes, savedNote])
-                showSuccessMsg(`Note added successfully`)
+                showSuccessMsg('Note added successfully')
             })
             .catch(err => {
-                showErrorMsg(`Could not add note`)
+                showErrorMsg('Could not add note')
             })
     }
 
@@ -38,7 +48,7 @@ export function NoteIndex() {
             })
             .catch(err => {
                 console.log('Problems removing note:', err)
-                showErrorMsg(`Having problems removing Note!`)
+                showErrorMsg('Having problems removing Note!')
             })
     }
 
@@ -46,10 +56,12 @@ export function NoteIndex() {
     return (
         <section className='note-index'>
             <NoteFilter />
+
             <div>
                 <NoteAdd addNote={addNote} />
                 <NoteList notes={notes} onRemoveNote={onRemoveNote} />
             </div>
+            <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <UserMsg />
         </section>
     )

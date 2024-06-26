@@ -1,0 +1,10 @@
+.note-search-filter {
+    grid-column: 2;
+    text-align: center;
+    margin-block-start: 10px;
+}
+.note-search-filter input {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px 20px;
+    border-radius: 5px;
+}

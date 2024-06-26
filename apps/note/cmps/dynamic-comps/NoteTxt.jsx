@@ -1,9 +1,8 @@
-import { noteService } from '../../services/note.service'
+import { noteService } from '../../services/note.service.js'
 
 const { useState } = React
 export function NoteTxt({ addNote, type }) {
     const [noteInfo, setNoteInfo] = useState({ txt: '' })
-
     function handleChange({ target }) {
         const { name: field, value } = target
         setNoteInfo(prevNoteInfo => ({ ...prevNoteInfo, [field]: value }))
@@ -12,7 +11,7 @@ export function NoteTxt({ addNote, type }) {
     function onAddNote(ev) {
         ev.preventDefault()
         const emptyNote = noteService.getEmptyNote()
-        const noteToAdd = { ...emptyNote, info: { ...emptyNote.info, ...noteInfo } }
+        const noteToAdd = { ...emptyNote, info: { ...emptyNote.info, ...noteInfo }, type }
         addNote(noteToAdd)
         setNoteInfo({ txt: '' })
         noteService

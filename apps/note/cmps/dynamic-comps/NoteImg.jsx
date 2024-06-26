@@ -1,4 +1,4 @@
-import { noteService } from '../../services/note.service'
+import { noteService } from '../../services/note.service.js'
 
 const { useState } = React
 

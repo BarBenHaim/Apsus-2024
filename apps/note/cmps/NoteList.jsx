@@ -1,18 +1,30 @@
 import { NotePreview } from './NotePreview.jsx'
-const { Link } = ReactRouterDOM
+const { Link, useNavigate, Outlet } = ReactRouterDOM
 
 export function NoteList({ notes, onRemoveNote }) {
+    const navigate = useNavigate()
+
+    function handleArticleClick(noteId) {
+        navigate(`/note/edit/${noteId}`)
+    }
+
     return (
         <section className='note-list'>
             {notes.map(note => (
-                <article className='note' key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
+                <article
+                    className='note'
+                    key={note.id}
+                    style={{ backgroundColor: note.style.backgroundColor }}
+                    onClick={() => handleArticleClick(note.id)}
+                >
                     <NotePreview note={note} />
-                    <button onClick={() => onRemoveNote(note.id)}>Remove</button>
-                    <button>
-                        <Link to={`/note/${note.id}`}>Details</Link>
-                    </button>
-                    <button>
-                        <Link to={`/note/edit/${note.id}`}>Edit</Link>
+                    <button
+                        onClick={e => {
+                            e.stopPropagation()
+                            onRemoveNote(note.id)
+                        }}
+                    >
+                        Remove
                     </button>
                 </article>
             ))}

@@ -1,5 +1,4 @@
 const { useNavigate, useParams } = ReactRouterDOM
-
 const { useState, useEffect } = React
 import { noteService } from '../services/note.service.js'
 
