@@ -18,7 +18,7 @@ export function NoteTxt({ addNote, type }) {
     }
 
     return (
-        <form className='add-text flex column' onSubmit={onAddNote}>
+        <form className='add-text flex column justify-center' onSubmit={onAddNote}>
             <input
                 title='add note'
                 type='text'

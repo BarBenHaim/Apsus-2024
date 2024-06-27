@@ -3,9 +3,7 @@ import { NotePreview } from './NotePreview.jsx'
 
 const { useState } = React
 
-export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick, onPinChange, onBgChange }) {
-    const [colorPickerNoteId, setColorPickerNoteId] = useState(null)
-
+export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick, onPinChange }) {
     return (
         <article
             className='note-card'
@@ -35,8 +33,6 @@ export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick,
             <button className='btn-action' onClick={() => console.log(note.id)}>
                 <i class='fa-solid fa-palette'></i>
             </button>
-
-            {colorPickerNoteId == note.id && <ColorPicker onChangeColor={color => onBgChange(note.id, color)} />}
         </article>
     )
 }

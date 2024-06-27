@@ -1,7 +1,12 @@
 .user-msg {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
     background-color: lightgray;
-    padding: 1em;
+    padding: 0.6em;
     position: absolute;
+    border-radius: 10px;
     top: 1em;
     right: 1em;
 }
@@ -15,6 +20,9 @@
 }
 
 .user-msg button {
+    cursor: pointer;
     float: right;
     margin: 1em;
+    background: none;
+    border: none;
 }
