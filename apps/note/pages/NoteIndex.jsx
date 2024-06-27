@@ -96,6 +96,12 @@ export function NoteIndex() {
         })
     }
 
+    function duplicateNote(noteId) {
+        const noteToDuplicate = notes.find(note => note.id === noteId)
+        const duplicatedNote = { ...noteToDuplicate, id: null }
+        addNote(duplicatedNote)
+    }
+
     if (!notes) return <div>Loading...</div>
     return (
         <section className='note-index'>
@@ -110,6 +116,7 @@ export function NoteIndex() {
                     onPinChange={onPinChange}
                     onTodoUpdate={onTodoUpdate}
                     onBgChange={onBgChange}
+                    duplicateNote={duplicateNote}
                 />
             </div>
             <UserMsg />

@@ -11,6 +11,7 @@ export function NoteCard({
     onPinChange,
     onTodoUpdate,
     onBgChange,
+    duplicateNote,
 }) {
     const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
 
@@ -53,6 +54,15 @@ export function NoteCard({
                 }}
             >
                 <i className='fa-solid fa-palette'></i>
+            </button>
+            <button
+                className='btn-action'
+                onClick={e => {
+                    e.stopPropagation()
+                    duplicateNote(note.id)
+                }}
+            >
+                <i className='fa-solid fa-copy'></i>
             </button>
             {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
         </article>

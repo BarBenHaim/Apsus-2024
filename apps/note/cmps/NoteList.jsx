@@ -1,7 +1,7 @@
 import { NoteCard } from './NoteCard.jsx'
 const { useNavigate, Outlet } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUpdate, onBgChange }) {
+export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUpdate, onBgChange, duplicateNote }) {
     const pinnedNotes = notes.filter(note => note.isPinned === true)
     const nonPinnedNotes = notes.filter(note => note.isPinned !== true)
 
@@ -20,9 +20,9 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUp
     return (
         <React.Fragment>
             <h2 className='pinned-notes-title notes-title'>Pinned Notes</h2>
-            <section className='pinned-note-list note-list'>
-                {pinnedNotes.map(note => {
-                    return (
+            <section className='pinned-note-list note-list no-notes'>
+                {pinnedNotes.length ? (
+                    pinnedNotes.map(note => (
                         <NoteCard
                             key={note.id}
                             onRemoveNote={onRemoveNote}
@@ -33,14 +33,17 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUp
                             onPinChange={onPinChange}
                             onTodoUpdate={onTodoUpdate}
                             onBgChange={onBgChange}
+                            duplicateNote={duplicateNote}
                         />
-                    )
-                })}
+                    ))
+                ) : (
+                    <div className='no-notes'>No pinned notes yet...</div>
+                )}
             </section>
             <h2 className='unpinned-notes-title notes-title'>Notes</h2>
             <section className='unpinned-note-list note-list'>
-                {nonPinnedNotes.map(note => {
-                    return (
+                {nonPinnedNotes.length ? (
+                    nonPinnedNotes.map(note => (
                         <NoteCard
                             key={note.id}
                             onRemoveNote={onRemoveNote}
@@ -51,9 +54,12 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUp
                             onPinChange={onPinChange}
                             onTodoUpdate={onTodoUpdate}
                             onBgChange={onBgChange}
+                            duplicateNote={duplicateNote}
                         />
-                    )
-                })}
+                    ))
+                ) : (
+                    <div className='no-notes'>No notes yet...</div>
+                )}
             </section>
             <Outlet />
         </React.Fragment>
