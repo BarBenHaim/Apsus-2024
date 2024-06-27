@@ -48,6 +48,20 @@ export function NoteIndex() {
             })
     }
 
+    function onTodoUpdate(noteId, updatedTodos) {
+        setNotes(prevNotes => {
+            const updatedNotes = prevNotes.map(note =>
+                note.id === noteId ? { ...note, info: { ...note.info, todos: updatedTodos } } : note
+            )
+            const updatedNote = updatedNotes.find(note => note.id === noteId)
+            noteService.save(updatedNote).catch(err => {
+                console.log('Problems updating todo status:', err)
+                showErrorMsg('Having problems updating todo status!')
+            })
+            return updatedNotes
+        })
+    }
+
     function onPinChange(noteId, isPinned) {
         setNotes(prevNotes => {
             const updatedNotes = prevNotes.map(note => (note.id === noteId ? { ...note, isPinned } : note))
@@ -94,6 +108,7 @@ export function NoteIndex() {
                     onRemoveNote={onRemoveNote}
                     loadNotes={loadNotes}
                     onPinChange={onPinChange}
+                    onTodoUpdate={onTodoUpdate}
                     onBgChange={onBgChange}
                 />
             </div>

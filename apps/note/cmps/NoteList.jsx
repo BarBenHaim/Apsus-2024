@@ -1,7 +1,7 @@
 import { NoteCard } from './NoteCard.jsx'
 const { useNavigate, Outlet } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onBgChange }) {
+export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUpdate, onBgChange }) {
     const pinnedNotes = notes.filter(note => note.isPinned === true)
     const nonPinnedNotes = notes.filter(note => note.isPinned !== true)
 
@@ -29,6 +29,7 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onBgChan
                         note={note}
                         loadNotes={loadNotes}
                         onPinChange={onPinChange}
+                        onTodoUpdate={onTodoUpdate}
                         onBgChange={onBgChange}
                     />
                 )
@@ -44,6 +45,7 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onBgChan
                         note={note}
                         loadNotes={loadNotes}
                         onPinChange={onPinChange}
+                        onTodoUpdate={onTodoUpdate}
                         onBgChange={onBgChange}
                     />
                 )

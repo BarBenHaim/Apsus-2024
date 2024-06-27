@@ -1,26 +1,21 @@
-const { useState, useEffect, useRef } = React
+const colors = ['#FFECB3', '#FFF9C4', '#FFCDD2', '#BBDEFB', '#C8E6C9', '#FFE0B2']
 
-export function ColorPicker({ onChangeColor }) {
-    const colors = ['#ffffff', '#f6e2dd', '#f39f76', '#fff8b8', '#e2f6d3', '#d3bfdb', '#aeccdc']
-    const [pickedColor, setPickedColor] = useState(null)
-
-    function onColorPickerClick(ev, color) {
-        ev.stopPropagation()
-        if (!color) return
-        setPickedColor(color)
-        onChangeColor(color)
-    }
-
+export function ColorPicker({ onColorSelect }) {
     return (
-        <div className='color-picker icones-display'>
-            {colors.map(color => (
-                <div
-                    key={color}
-                    className={`color-option ${pickedColor === color ? 'selected' : ''}`}
-                    style={{ backgroundColor: color }}
-                    onClick={ev => onColorPickerClick(ev, color)}
-                ></div>
-            ))}
+        <div className='color-picker'>
+            <div className='color-options'>
+                {colors.map(color => (
+                    <div
+                        key={color}
+                        className='color-option'
+                        style={{ backgroundColor: color }}
+                        onClick={e => {
+                            e.stopPropagation()
+                            onColorSelect(color)
+                        }}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

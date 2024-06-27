@@ -38,15 +38,7 @@ export function NoteDetails({ onRemoveNote }) {
                 }}
             >
                 <NotePreview note={note} />
-                <button
-                    className='btn-action'
-                    onClick={ev => {
-                        ev.stopPropagation()
-                        onRemoveNote(note.id)
-                    }}
-                >
-                    <i class='fa-solid fa-trash-can'></i>
-                </button>
+
                 <button
                     className='btn-action'
                     onClick={ev => {

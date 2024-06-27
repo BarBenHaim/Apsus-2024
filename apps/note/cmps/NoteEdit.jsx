@@ -64,6 +64,10 @@ export function NoteEdit() {
         })
     }
 
+    function handleCloseEdit() {
+        navigate('/note')
+    }
+
     return (
         <section
             className='note-edit'
@@ -71,6 +75,9 @@ export function NoteEdit() {
                 backgroundColor: noteToEdit.style.backgroundColor,
             }}
         >
+            <button className='btn-close-edit' onClick={handleCloseEdit}>
+                x
+            </button>
             <NotePreview note={noteToEdit} />
             <form onSubmit={onSaveNote}>
                 <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
