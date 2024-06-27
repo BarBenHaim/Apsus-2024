@@ -33,4 +33,5 @@
 @import './apps/note/cmps/NoteFilter.css';
 @import './apps/note/cmps/NoteSearchFilter.css';
 @import './apps/note/cmps/NoteDetails.css';
+@import './apps/note/cmps/NoteEdit.css';
 @import './apps/note/pages/NoteIndex.css';

@@ -2,6 +2,7 @@ const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
+import { NotePreview } from './NotePreview.jsx'
 import { NoteSetFormByType } from './NoteSetFormByType.jsx'
 
 export function NoteEdit() {
@@ -64,7 +65,13 @@ export function NoteEdit() {
     }
 
     return (
-        <section className='note-edit'>
+        <section
+            className='note-edit'
+            style={{
+                backgroundColor: noteToEdit.style.backgroundColor,
+            }}
+        >
+            <NotePreview note={noteToEdit} />
             <form onSubmit={onSaveNote}>
                 <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
                 <button type='submit'>Save Note</button>

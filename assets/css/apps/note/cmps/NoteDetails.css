@@ -20,3 +20,10 @@
     transform: translate(-50%, -50%);
     animation: moveToCenter 0.4s ease-out forwards;
 }
+
+.backdrop {
+    cursor: pointer;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}

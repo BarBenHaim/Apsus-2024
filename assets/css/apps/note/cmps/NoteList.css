@@ -1,12 +1,10 @@
-/* note list */
-
 .note-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 10px;
 }
 
-.note {
+.note-card {
     border: 1px solid lightgray;
     border-radius: 20px;
     padding: 15px;
@@ -15,6 +13,6 @@
     height: fit-content;
 }
 
-.note:hover {
+.note-card:hover {
     transform: translateY(-3px);
 }

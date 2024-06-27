@@ -48,6 +48,10 @@ export function NoteIndex() {
             })
     }
 
+    function onPinChange(noteId, isPinned) {
+        setNotes(prevNotes => prevNotes.map(note => (note.id === noteId ? { ...note, isPinned } : note)))
+    }
+
     if (!notes) return <div>Loading...</div>
     return (
         <section className='note-index'>
@@ -56,7 +60,7 @@ export function NoteIndex() {
             <div>
                 <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <NoteAdd addNote={addNote} />
-                <NoteList notes={notes} onRemoveNote={onRemoveNote} />
+                <NoteList notes={notes} onRemoveNote={onRemoveNote} loadNotes={loadNotes} onPinChange={onPinChange} />
             </div>
             <UserMsg />
         </section>
