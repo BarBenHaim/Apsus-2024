@@ -1,5 +1,6 @@
 import { MailPreview } from './MailPreview.jsx'
-const { useParams, useNavigate, Link } = ReactRouterDOM
+const { Link } = ReactRouterDOM
+
 export function MailList({ mails, onRemoveMail, onRead }) {
   return (
     <ul className="list-container">

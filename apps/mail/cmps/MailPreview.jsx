@@ -1,3 +1,5 @@
+import { MailDetails } from './MailDetails.jsx'
+
 export function MailPreview({ mail, onRemoveMail }) {
   // console.log(mail)
 
@@ -8,23 +10,26 @@ export function MailPreview({ mail, onRemoveMail }) {
     const year = now.getFullYear()
     return `${day}/${month}/${year}`
   }
-
+  const isRead = mail.isRead
   return (
-    <div className="mail-preview">
-      <p>
-        <span>
-          <i className="fa-regular fa-star"></i>{' '}
-        </span>
-        {mail.from}
-      </p>
-      <p>{mail.subject}</p>
-      <p>{getCurrentDate()}</p>
-      <section>
-        <i
-          onClick={() => onRemoveMail(mail.id)}
-          className="fa-regular fa-trash-can"
-        ></i>
-      </section>
+    <div>
+      <div className={`mail-preview ${!isRead ? 'unread' : ''}`}>
+        <p>
+          <span>
+            <i className="fa-regular fa-star"></i>{' '}
+          </span>
+          {mail.from}
+        </p>
+        <p>{mail.subject}</p>
+        <p>{getCurrentDate()}</p>
+        <section>
+          <i
+            onClick={(ev) => onRemoveMail(ev, mail.id)}
+            className="fa-regular fa-trash-can"
+          ></i>
+        </section>
+      </div>
+      {/* <MailDetails mail={mail} /> */}
     </div>
   )
 }

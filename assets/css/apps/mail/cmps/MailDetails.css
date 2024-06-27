@@ -1,4 +1,8 @@
 .mail-details {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+
   padding: 20px;
   background-color: white;
   margin: 10px;
