@@ -3,7 +3,7 @@ export function MailFolder({
   mails,
   filretSentMails,
   getInbox,
-  filterbyStar,
+  filterStarMails,
 }) {
   return (
     <section className="folder-container">
@@ -18,8 +18,9 @@ export function MailFolder({
       <section className="folder-item">
         <div onClick={() => getInbox()}>
           <i className="fa-solid fa-inbox"></i>Inboxes
+          <p>{mails.length}</p>
         </div>
-        <div onClick={() => filterbyStar(mails)}>
+        <div onClick={() => filterStarMails(mails)}>
           <i className="fa-regular fa-star"></i>Started
         </div>
         <div onClick={() => filretSentMails(mails)}>

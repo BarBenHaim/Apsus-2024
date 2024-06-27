@@ -29,7 +29,6 @@ export function MailIndex() {
         (mail) => mail.from !== loggedinUser.email
       )
       setfilterMail(filteredMails)
-      // console.log(mails)
     })
   }, [])
 
@@ -54,6 +53,29 @@ export function MailIndex() {
       })
   }
 
+  function filretSentMails(mails) {
+    const filteredMails = mails.filter(
+      (mail) => mail.from === loggedinUser.email
+    )
+    setfilterMail(filteredMails)
+    return filteredMails
+  }
+
+  function filterStarMails() {
+    const starMails = mails.filter((mail) => mail.isStar)
+    setfilterMail(starMails)
+    return starMails
+  }
+  function onStar(ev, mailId) {
+    ev.preventDefault()
+    setMails((prevMails) =>
+      prevMails.map((mail) =>
+        mail.id === mailId ? (mail.isStar = true) : (mail.isStar = false)
+      )
+    )
+    console.log(mails)
+  }
+
   function onRead(mailId) {
     mails.map((mail) => {
       if (mail.id === mailId) {
@@ -71,23 +93,6 @@ export function MailIndex() {
     setIsModalOpen(false)
   }
 
-  function filretSentMails(mails) {
-    const filteredMails = mails.filter(
-      (mail) => mail.from === loggedinUser.email
-    )
-    setfilterMail(filteredMails)
-    return filteredMails
-  }
-  function filterbyStar(mails) {
-    console.log(mails)
-  }
-  // function handleSendMail(newMail) {
-  //   mailService.send(newMail).then((sentMail) => {
-  //     setMails((prevMails) => [sentMail, ...prevMails])
-  //     setIsModalOpen(false)
-  //   })
-  // }
-
   if (!mails) return <div>Loading...</div>
   return (
     <section className="mail-layout">
@@ -96,8 +101,8 @@ export function MailIndex() {
         mails={mails}
         onNewMail={onNewMail}
         filretSentMails={filretSentMails}
-        filterbyStar={filterbyStar}
         getInbox={getInbox}
+        filterStarMails={filterStarMails}
       />
 
       {!mailId && (
@@ -105,6 +110,7 @@ export function MailIndex() {
           mails={filterMail}
           onRemoveMail={onRemoveMail}
           onRead={onRead}
+          onStar={onStar}
         />
       )}
       {mailId && <Outlet />}
