@@ -1,6 +1,6 @@
-import { NotePreview } from './NotePreview'
-const { useState, useEffect } = React
-export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick, loadNotes, onPinChange }) {
+import { NotePreview } from './NotePreview.jsx'
+
+export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick, onPinChange }) {
     return (
         <article
             className='note-card'
