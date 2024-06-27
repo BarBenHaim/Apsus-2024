@@ -42,7 +42,7 @@ export function NotePreview({ note, onPinChange }) {
                     ))}
                 </ul>
             )}
-            <p>Created at: {new Date(note.createdAt).toLocaleDateString()}</p>
+            <p className='note-date'>Created at: {new Date(note.createdAt).toLocaleDateString()}</p>
         </article>
     )
 }
