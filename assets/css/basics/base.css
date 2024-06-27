@@ -16,7 +16,8 @@ a {
     color: inherit;
 }
 
-img {
+img,
+iframe {
     height: 100%;
     width: 100%;
     object-fit: cover;

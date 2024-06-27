@@ -1,33 +1,54 @@
-import { NotePreview } from './NotePreview.jsx'
-const { Link, useNavigate, Outlet } = ReactRouterDOM
+import { NoteCard } from './NoteCard.jsx'
+const { useNavigate, Outlet } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onBgChange }) {
+    const pinnedNotes = notes.filter(note => note.isPinned === true)
+    const nonPinnedNotes = notes.filter(note => note.isPinned !== true)
+
     const navigate = useNavigate()
 
-    function handleArticleClick(noteId) {
+    if (!notes.length) return <div>No notes found...</div>
+
+    function handleNoteClick(noteId) {
         navigate(`/note/${noteId}`)
+    }
+
+    function handleEditClick(noteId) {
+        navigate(`/note/edit/${noteId}`)
     }
 
     return (
         <section className='note-list'>
-            {notes.map(note => (
-                <article
-                    className='note'
-                    key={note.id}
-                    style={{ backgroundColor: note.style.backgroundColor }}
-                    onClick={() => handleArticleClick(note.id)}
-                >
-                    <NotePreview note={note} />
-                    <button
-                        onClick={e => {
-                            e.stopPropagation()
-                            onRemoveNote(note.id)
-                        }}
-                    >
-                        Remove
-                    </button>
-                </article>
-            ))}
+            {pinnedNotes.map(note => {
+                return (
+                    <NoteCard
+                        key={note.id}
+                        onRemoveNote={onRemoveNote}
+                        handleEditClick={handleEditClick}
+                        handleNoteClick={handleNoteClick}
+                        note={note}
+                        loadNotes={loadNotes}
+                        onPinChange={onPinChange}
+                        onBgChange={onBgChange}
+                    />
+                )
+            })}
+
+            {nonPinnedNotes.map(note => {
+                return (
+                    <NoteCard
+                        key={note.id}
+                        onRemoveNote={onRemoveNote}
+                        handleEditClick={handleEditClick}
+                        handleNoteClick={handleNoteClick}
+                        note={note}
+                        loadNotes={loadNotes}
+                        onPinChange={onPinChange}
+                        onBgChange={onBgChange}
+                    />
+                )
+            })}
+
             <Outlet />
         </section>
     )

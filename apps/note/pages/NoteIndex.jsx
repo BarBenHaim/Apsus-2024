@@ -48,15 +48,54 @@ export function NoteIndex() {
             })
     }
 
+    function onPinChange(noteId, isPinned) {
+        setNotes(prevNotes => {
+            const updatedNotes = prevNotes.map(note => (note.id === noteId ? { ...note, isPinned } : note))
+            const updatedNote = updatedNotes.find(note => note.id === noteId)
+            noteService
+                .save(updatedNote)
+
+                .catch(err => {
+                    console.log('Problems updating pin status:', err)
+                    showErrorMsg('Having problems updating pin status!')
+                })
+            return updatedNotes
+        })
+    }
+
+    function onBgChange(noteId, color) {
+        setNotes(prevNotes => {
+            const updatedNotes = prevNotes.map(note =>
+                note.id === noteId ? { ...note, style: { ...note.style, backgroundColor: color } } : note
+            )
+            const updatedNote = updatedNotes.find(note => note.id === noteId)
+            noteService
+                .save(updatedNote)
+                .then(() => {
+                    showSuccessMsg(`Note (${noteId}) background color updated successfully!`)
+                })
+                .catch(err => {
+                    console.log('Problems updating background color:', err)
+                    showErrorMsg('Having problems updating background color!')
+                })
+            return updatedNotes
+        })
+    }
+
     if (!notes) return <div>Loading...</div>
     return (
         <section className='note-index'>
             <NoteFilter />
-
             <div>
                 <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <NoteAdd addNote={addNote} />
-                <NoteList notes={notes} onRemoveNote={onRemoveNote} />
+                <NoteList
+                    notes={notes}
+                    onRemoveNote={onRemoveNote}
+                    loadNotes={loadNotes}
+                    onPinChange={onPinChange}
+                    onBgChange={onBgChange}
+                />
             </div>
             <UserMsg />
         </section>

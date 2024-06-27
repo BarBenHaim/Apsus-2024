@@ -1,0 +1,31 @@
+.text-edit-form,
+.img-edit-form,
+.video-edit-form,
+.todos-edit-form {
+    display: grid;
+}
+
+.text-edit-form label,
+.img-edit-form label,
+.video-edit-form label,
+.todos-edit-form label {
+    text-align: center;
+    margin-block-end: 5px;
+}
+
+.text-edit-form input,
+.img-edit-form input,
+.video-edit-form input,
+.todos-edit-form input {
+    border: none;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.btn-edit-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-block-start: 5px;
+}

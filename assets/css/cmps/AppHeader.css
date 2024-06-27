@@ -4,9 +4,14 @@ header {
 }
 
 .app-header {
+    font-family: Lato;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    align-items: center;
+    padding: 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 nav a {
@@ -25,6 +30,7 @@ nav a.active {
 
 .logo {
     font-family: Roboto;
+    font-size: 1.5em;
 }
 
 .app-header h3 span:nth-child(1) {

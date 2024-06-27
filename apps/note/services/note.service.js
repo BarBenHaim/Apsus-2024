@@ -70,192 +70,223 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: 'n102',
-                createdAt: 1112223,
-
-                type: 'NoteImg',
+                id: 'n101',
+                createdAt: 1622212231,
+                type: 'NoteVideo',
                 isPinned: true,
+                style: { backgroundColor: '#F4B400' },
                 info: {
-                    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Lionel_Messi_WC2022.jpg/220px-Lionel_Messi_WC2022.jpg',
-                    title: '',
-                },
-                style: {
-                    backgroundColor: '#aeccdc',
+                    title: 'Inspiring Speech',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 },
             },
             {
-                id: 'n101',
-                createdAt: 1112222,
-                type: 'NoteTxt',
+                id: 'n102',
+                createdAt: 1622212232,
+                type: 'NoteVideo',
                 isPinned: true,
-                style: {
-                    backgroundColor: '#f39f76',
-                },
+                style: { backgroundColor: '#DB4437' },
                 info: {
-                    txt: 'Demo data is great.',
+                    title: 'Tech Talk',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ',
                 },
             },
             {
                 id: 'n103',
-                createdAt: 1112224,
-
-                type: 'NoteVideo',
+                createdAt: 1622212233,
+                type: 'NoteImg',
                 isPinned: true,
+                style: { backgroundColor: '#4285F4' },
                 info: {
-                    title: 'Netherlands 2024',
-                    youtubeUrl: 'https://www.youtube.com/watch?v=nFjDqwtXdKw',
-                },
-                style: {
-                    backgroundColor: '#d3bfdb',
+                    imgUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+                    title: 'Delicious Burger',
                 },
             },
             {
                 id: 'n104',
-                createdAt: 1112226,
-
-                type: 'NoteTodos',
+                createdAt: 1622212234,
+                type: 'NoteImg',
                 isPinned: false,
+                style: { backgroundColor: '#0F9D58' },
                 info: {
-                    title: 'Things to do',
-                    todos: [
-                        {
-                            txt: 'Grocery shopping',
-                            doneAt: 134334564,
-                            id: utilService.makeId(),
-                        },
-                        {
-                            txt: 'Workout',
-                            doneAt: null,
-                            id: utilService.makeId(),
-                        },
-                        {
-                            txt: 'Coding',
-                            doneAt: null,
-                            id: utilService.makeId(),
-                        },
-                    ],
-                },
-                style: {
-                    backgroundColor: '#efeff1',
+                    imgUrl: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0',
+                    title: 'Beautiful Sunset',
                 },
             },
             {
                 id: 'n105',
-                createdAt: 1112242,
-
-                type: 'NoteImg',
+                createdAt: 1622212235,
+                type: 'NoteTxt',
                 isPinned: false,
-                info: {
-                    imgUrl: 'https://i.pinimg.com/564x/fe/04/ec/fe04ecdaed193eeb0c3bb317c01c1c52.jpg',
-                    title: '',
-                },
-                style: {
-                    backgroundColor: '#fff',
-                },
+                style: { backgroundColor: '#F4B400' },
+                info: { txt: 'Remember to call the doctor.' },
             },
             {
                 id: 'n106',
-                createdAt: 1112240,
-
-                type: 'NoteImg',
+                createdAt: 1622212236,
+                type: 'NoteTodos',
                 isPinned: true,
+                style: { backgroundColor: '#DB4437' },
                 info: {
-                    imgUrl: 'https://i.pinimg.com/564x/9a/67/11/9a6711f44756b6fe23a7309463afb1bd.jpg',
-                    title: 'Me and foden',
-                },
-                style: {
-                    backgroundColor: '#b4ddd3',
+                    title: 'Weekend Tasks',
+                    todos: [
+                        { txt: 'Clean the house', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Buy groceries', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Finish the report', doneAt: null, id: utilService.makeId() },
+                    ],
                 },
             },
             {
                 id: 'n107',
-                createdAt: 1112290,
-
-                type: 'NoteTodos',
+                createdAt: 1622212237,
+                type: 'NoteVideo',
                 isPinned: true,
+                style: { backgroundColor: '#4285F4' },
                 info: {
-                    title: 'Groceries',
-                    todos: [
-                        { txt: 'Apples', doneAt: 134334564, id: utilService.makeId() },
-                        {
-                            txt: 'Oranges',
-                            doneAt: 134334564987,
-                            id: utilService.makeId(),
-                        },
-                        {
-                            txt: 'Milk',
-                            doneAt: null,
-                            id: utilService.makeId(),
-                        },
-                        {
-                            txt: 'Cereal',
-                            doneAt: null,
-                            id: utilService.makeId(),
-                        },
-                        {
-                            txt: 'Bread',
-                            doneAt: null,
-                            id: utilService.makeId(),
-                        },
-                    ],
-                },
-                style: {
-                    backgroundColor: '#efeff1',
+                    title: 'My Yoga',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=v7AYKMP6rOE',
                 },
             },
             {
                 id: 'n108',
-                createdAt: 1112333,
-                type: 'NoteImg',
-                isPinned: true,
+                createdAt: 1622212238,
+                type: 'NoteVideo',
+                isPinned: false,
+                style: { backgroundColor: '#0F9D58' },
                 info: {
-                    imgUrl: 'https://cdn.britannica.com/01/235601-050-895651AA/Friends-cast-television-series-1994.jpg',
-                    title: '',
-                },
-                style: {
-                    backgroundColor: '#efeff1',
+                    title: 'Travel Vlog',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=V-_O7nl0Ii0',
                 },
             },
             {
                 id: 'n109',
-                createdAt: 1112334,
-
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    imgUrl: 'https://i.pinimg.com/564x/cb/96/c1/cb96c16f1ec3bcd98b6ddf0748dddd6b.jpg',
-                    title: 'MT GRATEST PICTURE',
-                },
-                style: {
-                    backgroundColor: '#aeccdc',
-                },
+                createdAt: 1622212239,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: { backgroundColor: '#F4B400' },
+                info: { txt: 'Plan vacation for next month.' },
             },
             {
                 id: 'n110',
-                createdAt: 1112534,
-
-                type: 'NoteVideo',
+                createdAt: 1622212240,
+                type: 'NoteImg',
                 isPinned: false,
+                style: { backgroundColor: '#DB4437' },
                 info: {
-                    youtubeUrl: 'https://www.youtube.com/watch?v=uYJQIKAVBw8',
-                    title: '',
-                },
-                style: {
-                    backgroundColor: '#efeff1',
+                    imgUrl: 'https://images.unsplash.com/photo-1516117172878-fd2c41f4a759',
+                    title: 'Coding Workspace',
                 },
             },
             {
                 id: 'n111',
-                createdAt: 1119898,
-
+                createdAt: 1622212241,
+                type: 'NoteImg',
+                isPinned: true,
+                style: { backgroundColor: '#4285F4' },
+                info: {
+                    imgUrl: 'https://unsplash.com/photos/a-red-and-white-motorcycle-parked-on-the-side-of-a-road-r5zfOMZOl9U',
+                    title: 'My Motorcycle',
+                },
+            },
+            {
+                id: 'n112',
+                createdAt: 1622212242,
+                type: 'NoteTodos',
+                isPinned: true,
+                style: { backgroundColor: '#0F9D58' },
+                info: {
+                    title: 'Daily Routine',
+                    todos: [
+                        { txt: 'Morning exercise', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Breakfast', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Work on project', doneAt: null, id: utilService.makeId() },
+                    ],
+                },
+            },
+            {
+                id: 'n113',
+                createdAt: 1622212243,
+                type: 'NoteVideo',
+                isPinned: false,
+                style: { backgroundColor: '#F4B400' },
+                info: {
+                    title: 'Motivational Video',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0',
+                },
+            },
+            {
+                id: 'n114',
+                createdAt: 1622212244,
+                type: 'NoteTxt',
+                isPinned: false,
+                style: { backgroundColor: '#DB4437' },
+                info: { txt: 'Organize my desk.' },
+            },
+            {
+                id: 'n115',
+                createdAt: 1622212245,
+                type: 'NoteImg',
+                isPinned: true,
+                style: { backgroundColor: '#4285F4' },
+                info: {
+                    imgUrl: 'https://images.unsplash.com/photo-1494177310976-837a1d69e4bb',
+                    title: 'Sunset Over City',
+                },
+            },
+            {
+                id: 'n116',
+                createdAt: 1622212246,
+                type: 'NoteVideo',
+                isPinned: false,
+                style: { backgroundColor: '#0F9D58' },
+                info: {
+                    title: 'Cooking Tips',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=4aZr5hZXP_s',
+                },
+            },
+            {
+                id: 'n117',
+                createdAt: 1622212247,
+                type: 'NoteTodos',
+                isPinned: true,
+                style: { backgroundColor: '#F4B400' },
+                info: {
+                    title: 'Fitness Goals',
+                    todos: [
+                        { txt: 'Run 5km', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Push-ups', doneAt: null, id: utilService.makeId() },
+                        { txt: 'Stretching', doneAt: null, id: utilService.makeId() },
+                    ],
+                },
+            },
+            {
+                id: 'n118',
+                createdAt: 1622212248,
                 type: 'NoteImg',
                 isPinned: false,
+                style: { backgroundColor: '#DB4437' },
                 info: {
-                    imgUrl: 'https://i.pinimg.com/564x/8d/a4/3d/8da43dde29c98af372c0a2c93307e4a4.jpg',
-                    title: '',
+                    imgUrl: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0',
+                    title: 'Beach Vibes',
                 },
-                style: {
-                    backgroundColor: '#efeff1',
+            },
+            {
+                id: 'n119',
+                createdAt: 1622212249,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: { backgroundColor: '#4285F4' },
+                info: { txt: 'Meeting at 10 AM on Thursday.' },
+            },
+            {
+                id: 'n120',
+                createdAt: 1622212250,
+                type: 'NoteVideo',
+                isPinned: false,
+                style: { backgroundColor: '#0F9D58' },
+                info: {
+                    title: 'Travel Guide',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=K4TOrB7at0Y',
                 },
             },
         ]

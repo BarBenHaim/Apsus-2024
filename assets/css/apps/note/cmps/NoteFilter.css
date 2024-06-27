@@ -14,6 +14,7 @@
     background-color: #f1f3f4;
 }
 
-.btn-filter:active {
+.btn-filter:active,
+.btn-filter.active {
     background-color: #feefc3;
 }

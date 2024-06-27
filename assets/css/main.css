@@ -36,4 +36,10 @@
 @import './apps/note/cmps/NoteFilter.css';
 @import './apps/note/cmps/NoteSearchFilter.css';
 @import './apps/note/cmps/NoteDetails.css';
+@import './apps/note/cmps/NoteEdit.css';
+@import './apps/note/cmps/BtnActions.css';
+@import './apps/note/cmps/NoteSetFormByType.css';
 @import './apps/note/pages/NoteIndex.css';
+
+/* Notes MQ */
+@import './apps/note/mq.css';

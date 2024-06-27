@@ -1,15 +1,8 @@
-@keyframes moveToCenter {
-    from {
-        transform: translate(-50%, -50%) scale(0.3);
-        opacity: 0;
-    }
-    to {
-        transform: translate(-50%, -50%) scale(1.4);
-        opacity: 1;
-    }
-}
-
-.note-details {
+.note-edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     padding: 10px;
     border-radius: 20px;
