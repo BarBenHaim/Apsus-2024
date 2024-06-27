@@ -1,8 +1,6 @@
 import { MailDetails } from './MailDetails.jsx'
 
 export function MailPreview({ mail, onRemoveMail }) {
-  // console.log(mail)
-
   function getCurrentDate() {
     const now = new Date()
     const day = now.getDate().toString().padStart(2, '0')

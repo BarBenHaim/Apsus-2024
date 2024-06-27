@@ -10,6 +10,9 @@
 @import './apps/mail/cmps/MailFilter.css';
 @import './apps/mail/cmps/MailFolder.css';
 @import './apps/mail/cmps/MailDetails.css';
+@import './apps/mail/cmps/MailModal.css';
+
+/* @import '/apps/mail/cmps/MailModal.css'; */
 
 /* Setup */
 @import './setup/variables.css';
