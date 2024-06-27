@@ -19,10 +19,6 @@ export function NoteIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...txt }))
     }
 
-    // function loadNotes() {
-    //     noteService.query().then(setNotes)
-    // }
-
     function loadNotes() {
         noteService.query(filterBy).then(setNotes)
     }
@@ -58,10 +54,10 @@ export function NoteIndex() {
             <NoteFilter />
 
             <div>
+                <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <NoteAdd addNote={addNote} />
                 <NoteList notes={notes} onRemoveNote={onRemoveNote} />
             </div>
-            <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <UserMsg />
         </section>
     )

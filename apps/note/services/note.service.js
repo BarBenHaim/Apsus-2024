@@ -56,7 +56,7 @@ function getEmptyNote(type = 'NoteTxt', isPinned = false, createdAt = Date.now()
         type,
         isPinned,
         createdAt,
-        style: { backgroundColor: 'fff' },
+        style: { backgroundColor: '#ffffff' },
         info: { txt },
     }
 }

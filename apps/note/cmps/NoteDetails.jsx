@@ -1,36 +1,50 @@
-export function NoteDetails({ note, onClose }) {
+const { useNavigate, useParams } = ReactRouterDOM
+import { noteService } from '../services/note.service.js'
+import { NotePreview } from './NotePreview.jsx'
+
+const { useEffect, useState } = React
+
+export function NoteDetails() {
+    const [note, setNote] = useState(null)
+    const { noteId } = useParams()
+    const navigate = useNavigate()
+    useEffect(() => {
+        noteService.get(noteId).then(note => setNote(note))
+    }, [noteId])
+    if (!note) return <div>Loading...</div>
+
     return (
-        <div className='note-details-overlay' onClick={onClose}>
-            <div className='note-details' onClick={e => e.stopPropagation()}>
-                <button className='close-btn' onClick={onClose}>
-                    X
-                </button>
-                <h2>{note.info.title || ''}</h2>
-                {note.type === 'NoteImg' && note.info.imgUrl && <img src={note.info.imgUrl} alt='Note Image' />}
-                {note.type === 'NoteTxt' && note.info.txt && <p>{note.info.txt}</p>}
-                {note.type === 'NoteVideo' && note.info.youtubeUrl && (
-                    <iframe
-                        width='560'
-                        height='315'
-                        src={note.info.youtubeUrl.replace('watch?v=', 'embed/')}
-                        title='Note Video'
-                        frameBorder='0'
-                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                        allowFullScreen
-                    ></iframe>
-                )}
-                {note.type === 'NoteTodos' && note.info.todos && (
-                    <ul>
-                        {note.info.todos.map(todo => (
-                            <li key={todo.id}>
-                                <span>{todo.txt}</span> {todo.doneAt ? '✔' : '❌'}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                <p>Created at: {new Date(note.createdAt).toLocaleDateString()}</p>
-                <p>{note.isPinned ? 'Pinned' : ''}</p>
-            </div>
-        </div>
+        <section
+            className='note-details'
+            style={{
+                backgroundColor: note.style.backgroundColor,
+            }}
+        >
+            <NotePreview note={note} />
+            <button
+                onClick={ev => {
+                    ev.stopPropagation()
+                    onRemoveNote(note.id)
+                }}
+            >
+                Remove
+            </button>
+            <button
+                onClick={ev => {
+                    ev.stopPropagation()
+                    navigate(`/note/edit/${note.id}`)
+                }}
+            >
+                Edit
+            </button>
+            <button
+                onClick={ev => {
+                    ev.stopPropagation()
+                    navigate(`/note/${note.id}`)
+                }}
+            >
+                Details
+            </button>
+        </section>
     )
 }

@@ -5,7 +5,7 @@ export function NoteList({ notes, onRemoveNote }) {
     const navigate = useNavigate()
 
     function handleArticleClick(noteId) {
-        navigate(`/note/edit/${noteId}`)
+        navigate(`/note/${noteId}`)
     }
 
     return (
@@ -28,6 +28,7 @@ export function NoteList({ notes, onRemoveNote }) {
                     </button>
                 </article>
             ))}
+            <Outlet />
         </section>
     )
 }
