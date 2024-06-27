@@ -9,9 +9,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
 }
 
 nav a {
