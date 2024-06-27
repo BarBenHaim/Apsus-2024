@@ -23,6 +23,7 @@ export function NotePreview({ note }) {
                     allowFullScreen
                 ></iframe>
             )}
+
             {note.type === 'NoteTodos' && note.info.todos && (
                 <ul>
                     {note.info.todos.map(todo => (

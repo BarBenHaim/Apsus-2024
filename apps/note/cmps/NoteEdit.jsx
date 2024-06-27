@@ -1,6 +1,8 @@
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
+import { NoteSetFormByType } from './NoteSetFormByType.jsx'
 
 export function NoteEdit() {
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
@@ -24,25 +26,47 @@ export function NoteEdit() {
             .save(noteToEdit)
             .then(() => {
                 navigate('/note')
-                showSuccessMsg(`Note saved successfully!`)
+                showSuccessMsg('Note saved successfully!')
             })
             .catch(err => console.log('err:', err))
     }
 
-    function handleChange(event) {
-        const { name, value, type, checked } = event.target
-        const updatedValue = type === 'checkbox' ? checked : type === 'number' || type === 'range' ? +value : value
+    function handleChange({ target }) {
+        const field = target.name
+        let value = target.value
 
-        setNoteToEdit(prevNote => ({
-            ...prevNote,
-            [name]: updatedValue,
-        }))
+        switch (target.type) {
+            case 'number':
+            case 'range':
+                value = +value
+                break
+
+            case 'checkbox':
+                value = target.checked
+                break
+
+            default:
+                break
+        }
+
+        setNoteToEdit(prevNote => {
+            const keys = field.split('.')
+            const updatedNote = { ...prevNote }
+
+            let nestedObject = updatedNote
+            for (let i = 0; i < keys.length - 1; i++) {
+                nestedObject = nestedObject[keys[i]] = { ...nestedObject[keys[i]] }
+            }
+            nestedObject[keys[keys.length - 1]] = value
+
+            return updatedNote
+        })
     }
 
     return (
         <section className='note-edit'>
             <form onSubmit={onSaveNote}>
-                <input type='text' name='txt' value={noteToEdit.info.txt} onChange={handleChange} />
+                <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
                 <button type='submit'>Save Note</button>
             </form>
         </section>

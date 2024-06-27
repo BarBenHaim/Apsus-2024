@@ -4,8 +4,12 @@ const { Link, useNavigate, Outlet } = ReactRouterDOM
 export function NoteList({ notes, onRemoveNote }) {
     const navigate = useNavigate()
 
-    function handleArticleClick(noteId) {
+    function handleNoteClick(noteId) {
         navigate(`/note/${noteId}`)
+    }
+
+    function handleEditClick(noteId) {
+        navigate(`/note/edit/${noteId}`)
     }
 
     return (
@@ -15,7 +19,7 @@ export function NoteList({ notes, onRemoveNote }) {
                     className='note'
                     key={note.id}
                     style={{ backgroundColor: note.style.backgroundColor }}
-                    onClick={() => handleArticleClick(note.id)}
+                    onClick={() => handleNoteClick(note.id)}
                 >
                     <NotePreview note={note} />
                     <button
@@ -25,6 +29,14 @@ export function NoteList({ notes, onRemoveNote }) {
                         }}
                     >
                         Remove
+                    </button>
+                    <button
+                        onClick={e => {
+                            e.stopPropagation()
+                            handleEditClick(note.id)
+                        }}
+                    >
+                        Edit
                     </button>
                 </article>
             ))}
