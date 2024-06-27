@@ -1,7 +1,7 @@
 .mail-preview {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
 
   font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -13,10 +13,38 @@
   background-color: #f2f6fc;
 
   cursor: pointer;
+  position: relative;
 }
 
 .mail-preview:hover {
   box-shadow: rgba(100, 121, 143, 0.12) 0px -2px 0px 0px inset;
+}
+
+.preview-btn {
+  display: none; /* Hide by default */
+  position: absolute; /* Position it absolutely within mail-preview */
+  right: 10px;
+}
+
+.mail-preview:hover .preview-btn {
+  display: flex;
+  align-items: center;
+}
+
+.preview-btn i {
+  margin: 0 5px;
+  padding: 10px;
+  transition: background-color 0.3s, opacity 0.3s; /* Add transition for smooth effect */
+}
+.preview-btn i:hover {
+  opacity: 1;
+  background-color: #1558b015;
+  border-radius: 50%;
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -2px 0px 0px inset;
+}
+
+.mail-preview:hover .time {
+  display: none;
 }
 
 .unread {
