@@ -28,7 +28,7 @@ function createNewMail(to, sub, body) {
   let mails = localStorageService.loadFromStorage(MAIL_KEY)
   let newMail = {
     id: utilService.makeId(),
-    createdAt: 1551133930500,
+    createdAt: '2024-06-27T12:00:00Z',
     subject: sub,
     body: body,
     isStar: false,
@@ -47,7 +47,7 @@ function _createMails() {
     mails = [
       {
         id: 'e101',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-27T12:00:00Z',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
@@ -59,7 +59,7 @@ function _createMails() {
       },
       {
         id: 'e102',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-24T12:00:00Z',
         subject: 'Udemy',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -71,7 +71,7 @@ function _createMails() {
       },
       {
         id: 'e108',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-23T12:00:00Z',
         subject: 'Udemy',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -83,7 +83,7 @@ function _createMails() {
       },
       {
         id: 'e103',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-23T12:00:00Z',
         subject: 'Test',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -95,7 +95,7 @@ function _createMails() {
       },
       {
         id: 'e104',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-22T12:00:00Z',
         subject: 'Work',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -107,7 +107,7 @@ function _createMails() {
       },
       {
         id: 'e105',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-21T12:00:00Z',
         subject: 'weekend',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -119,7 +119,7 @@ function _createMails() {
       },
       {
         id: 'e106',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-21T12:00:00Z',
         subject: ' Hotel',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
@@ -131,7 +131,7 @@ function _createMails() {
       },
       {
         id: 'e107',
-        createdAt: 1551133930500,
+        createdAt: '2024-06-20T12:00:00Z',
         subject: 'Alljob',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,

@@ -17,11 +17,11 @@ export function MailFolder({
 
       <section className="folder-item">
         <div onClick={() => getInbox()}>
-          <i className="fa-solid fa-inbox"></i>Inboxes
+          <i className="fa-solid fa-inbox"></i>Inbox
           <p>{mails.length}</p>
         </div>
         <div onClick={() => filterStarMails(mails)}>
-          <i className="fa-regular fa-star"></i>Started
+          <i className="fa-regular fa-star"></i>Starrted
         </div>
         <div onClick={() => filretSentMails(mails)}>
           <i className="fa-regular fa-paper-plane"></i> Sent
