@@ -1,8 +1,6 @@
 import { MailDetails } from './MailDetails.jsx'
 
-export function MailPreview({ mail, onRemoveMail }) {
-  // console.log(mail)
-
+export function MailPreview({ mail, onRemoveMail, onStar }) {
   function getCurrentDate() {
     const now = new Date()
     const day = now.getDate().toString().padStart(2, '0')
@@ -16,7 +14,12 @@ export function MailPreview({ mail, onRemoveMail }) {
       <div className={`mail-preview ${!isRead ? 'unread' : ''}`}>
         <p>
           <span>
-            <i className="fa-regular fa-star"></i>{' '}
+            <i
+              onClick={(ev) => onStar(ev, mail.id)}
+              className={`fa-star ${
+                mail.isStar ? 'fa-solid star-yellow' : 'fa-regular'
+              }`}
+            ></i>
           </span>
           {mail.from}
         </p>
@@ -29,7 +32,6 @@ export function MailPreview({ mail, onRemoveMail }) {
           ></i>
         </section>
       </div>
-      {/* <MailDetails mail={mail} /> */}
     </div>
   )
 }

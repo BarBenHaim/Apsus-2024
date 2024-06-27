@@ -4,7 +4,8 @@
 }
 
 .folder-item > div {
-  padding: 10px;
+  display: flex;
+  padding: 15px;
   cursor: pointer;
   transition: background-color 0.3s, border-radius 0.3s;
 
@@ -12,11 +13,41 @@
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
-  text-align: center;
+  text-align: start;
+  align-items: center;
   letter-spacing: normal;
+  height: 5px;
+}
+.folder-item i {
+  padding: 10px;
 }
 
 .folder-item :hover {
-  background-color: #f0f0f0;
+  background-color: #1558b015;
   border-radius: 5px;
+}
+
+.compose-btn {
+  display: flex;
+  align-items: center;
+
+  background-color: #f2f6fc;
+  color: #202124;
+
+  border: none;
+  border-radius: 24px;
+
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+.compose-btn:hover {
+  background-color: #1558b015;
+}
+.compose-btn i {
+  margin-right: 8px;
 }

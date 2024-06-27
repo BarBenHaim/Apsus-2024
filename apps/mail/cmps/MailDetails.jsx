@@ -5,8 +5,8 @@ const { useParams, useNavigate } = ReactRouterDOM
 
 export function MailDetails() {
   const [mail, setMail] = useState(null)
-  const params = useParams()
   const navigate = useNavigate()
+  const params = useParams()
 
   useEffect(() => {
     loadMail()

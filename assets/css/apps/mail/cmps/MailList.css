@@ -2,3 +2,6 @@
 .list-container {
   list-style-type: none;
 }
+.star-yellow {
+  color: rgba(255, 255, 0, 0.603);
+}
