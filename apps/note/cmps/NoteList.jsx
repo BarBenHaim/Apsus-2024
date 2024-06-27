@@ -18,40 +18,44 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUp
     }
 
     return (
-        <section className='note-list'>
-            {pinnedNotes.map(note => {
-                return (
-                    <NoteCard
-                        key={note.id}
-                        onRemoveNote={onRemoveNote}
-                        handleEditClick={handleEditClick}
-                        handleNoteClick={handleNoteClick}
-                        note={note}
-                        loadNotes={loadNotes}
-                        onPinChange={onPinChange}
-                        onTodoUpdate={onTodoUpdate}
-                        onBgChange={onBgChange}
-                    />
-                )
-            })}
-
-            {nonPinnedNotes.map(note => {
-                return (
-                    <NoteCard
-                        key={note.id}
-                        onRemoveNote={onRemoveNote}
-                        handleEditClick={handleEditClick}
-                        handleNoteClick={handleNoteClick}
-                        note={note}
-                        loadNotes={loadNotes}
-                        onPinChange={onPinChange}
-                        onTodoUpdate={onTodoUpdate}
-                        onBgChange={onBgChange}
-                    />
-                )
-            })}
-
+        <React.Fragment>
+            <h2 className='pinned-notes-title notes-title'>Pinned Notes</h2>
+            <section className='pinned-note-list note-list'>
+                {pinnedNotes.map(note => {
+                    return (
+                        <NoteCard
+                            key={note.id}
+                            onRemoveNote={onRemoveNote}
+                            handleEditClick={handleEditClick}
+                            handleNoteClick={handleNoteClick}
+                            note={note}
+                            loadNotes={loadNotes}
+                            onPinChange={onPinChange}
+                            onTodoUpdate={onTodoUpdate}
+                            onBgChange={onBgChange}
+                        />
+                    )
+                })}
+            </section>
+            <h2 className='unpinned-notes-title notes-title'>Notes</h2>
+            <section className='unpinned-note-list note-list'>
+                {nonPinnedNotes.map(note => {
+                    return (
+                        <NoteCard
+                            key={note.id}
+                            onRemoveNote={onRemoveNote}
+                            handleEditClick={handleEditClick}
+                            handleNoteClick={handleNoteClick}
+                            note={note}
+                            loadNotes={loadNotes}
+                            onPinChange={onPinChange}
+                            onTodoUpdate={onTodoUpdate}
+                            onBgChange={onBgChange}
+                        />
+                    )
+                })}
+            </section>
             <Outlet />
-        </section>
+        </React.Fragment>
     )
 }

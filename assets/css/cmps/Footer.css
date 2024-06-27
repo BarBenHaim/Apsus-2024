@@ -1,0 +1,33 @@
+.footer {
+    background-color: rgba(189, 196, 196, 0.384);
+    color: #181818;
+    text-align: center;
+    padding: 12px 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    font-family: Lato;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.footer a {
+    color: #adadada1;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

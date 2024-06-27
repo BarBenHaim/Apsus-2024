@@ -9,6 +9,7 @@
     border-radius: 10px;
     top: 1em;
     right: 1em;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .user-msg.success {
