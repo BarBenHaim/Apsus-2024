@@ -4,21 +4,21 @@ export function NoteSetFormByType({ note, handleChange }) {
     switch (note.type) {
         case 'NoteTxt':
             return (
-                <div>
+                <div className='text-edit-form'>
                     <label>Text:</label>
                     <input type='text' name='info.txt' value={note.info.txt || ''} onChange={handleChange} />
                 </div>
             )
         case 'NoteImg':
             return (
-                <div>
+                <div className='img-edit-form'>
                     <label>Image URL:</label>
                     <input type='text' name='info.imgUrl' value={note.info.imgUrl || ''} onChange={handleChange} />
                 </div>
             )
         case 'NoteVideo':
             return (
-                <div>
+                <div className='video-edit-form'>
                     <label>Title:</label>
                     <input type='text' name='info.title' value={note.info.title || ''} onChange={handleChange} />
                     <label>YouTube URL:</label>
@@ -32,7 +32,7 @@ export function NoteSetFormByType({ note, handleChange }) {
             )
         case 'NoteTodos':
             return (
-                <div>
+                <div className='todos-edit-form'>
                     <label>Title:</label>
                     <input type='text' name='info.title' value={note.info.title || ''} onChange={handleChange} />
                     <label>Todos:</label>

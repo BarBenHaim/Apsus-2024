@@ -7,10 +7,11 @@
 .note-card {
     border: 1px solid lightgray;
     border-radius: 20px;
-    padding: 15px;
+    padding: 8px;
     cursor: pointer;
     transition: transform 0.5s ease;
     height: fit-content;
+    max-width: 200px;
 }
 
 .note-card:hover {

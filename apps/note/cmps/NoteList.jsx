@@ -1,9 +1,10 @@
 import { NoteCard } from './NoteCard.jsx'
 const { useNavigate, Outlet } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange }) {
+export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onBgChange }) {
     const pinnedNotes = notes.filter(note => note.isPinned === true)
     const nonPinnedNotes = notes.filter(note => note.isPinned !== true)
+
     const navigate = useNavigate()
 
     if (!notes.length) return <div>No notes found...</div>
@@ -28,6 +29,7 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange }) {
                         note={note}
                         loadNotes={loadNotes}
                         onPinChange={onPinChange}
+                        onBgChange={onBgChange}
                     />
                 )
             })}
@@ -42,6 +44,7 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange }) {
                         note={note}
                         loadNotes={loadNotes}
                         onPinChange={onPinChange}
+                        onBgChange={onBgChange}
                     />
                 )
             })}

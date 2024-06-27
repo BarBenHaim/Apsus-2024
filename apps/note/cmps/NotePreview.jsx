@@ -18,13 +18,13 @@ export function NotePreview({ note, onPinChange }) {
                 onClick={handlePinClick}
             ></img>
 
-            <h2>{note.info.title || ''}</h2>
+            <h2 className='note-title'>{note.info.title || ''}</h2>
             {note.type === 'NoteImg' && note.info.imgUrl && <img src={note.info.imgUrl} alt='Note Image' />}
             {note.type === 'NoteTxt' && note.info.txt && <p>{note.info.txt}</p>}
             {note.type === 'NoteVideo' && note.info.youtubeUrl && (
                 <iframe
-                    width='150'
-                    height='150'
+                    width='180'
+                    height='180'
                     src={note.info.youtubeUrl.replace('watch?v=', 'embed/')}
                     title='Note Video'
                     border='none'

@@ -7,6 +7,15 @@
     margin: 5px;
 }
 
+.note-preview .pin-img {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.note-details .pin-img {
+    opacity: 1;
+}
+
 .note-preview ul li,
 .note-preview p,
 .note-preview h2 {
@@ -16,4 +25,8 @@
 
 .note-preview ul {
     padding: 20px;
+}
+
+.note-title {
+    margin-block-end: 8px;
 }

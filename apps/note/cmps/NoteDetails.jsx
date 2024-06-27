@@ -39,20 +39,22 @@ export function NoteDetails({ onRemoveNote }) {
             >
                 <NotePreview note={note} />
                 <button
+                    className='btn-action'
                     onClick={ev => {
                         ev.stopPropagation()
                         onRemoveNote(note.id)
                     }}
                 >
-                    Remove
+                    <i class='fa-solid fa-trash-can'></i>
                 </button>
                 <button
+                    className='btn-action'
                     onClick={ev => {
                         ev.stopPropagation()
                         navigate(`/note/edit/${note.id}`)
                     }}
                 >
-                    Edit
+                    <i class='fa-solid fa-pen-to-square'></i>
                 </button>
             </section>
         </React.Fragment>

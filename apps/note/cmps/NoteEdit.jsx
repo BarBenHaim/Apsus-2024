@@ -74,7 +74,9 @@ export function NoteEdit() {
             <NotePreview note={noteToEdit} />
             <form onSubmit={onSaveNote}>
                 <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
-                <button type='submit'>Save Note</button>
+                <button type='submit' className='btn-edit-submit'>
+                    Save Note
+                </button>
             </form>
         </section>
     )
