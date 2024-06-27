@@ -23,24 +23,6 @@ export function App() {
             <Route path="/mail/:mailId" element={<MailDetails />} />
           </Route>
 
-          {/* <Route path="/mail/:mailId" element={<MailDetails />} /> */}
-          <Route path="/note" element={<NoteIndex />}>
-            <Route path="/note/edit/:noteId" element={<NoteEdit />} />
-            <Route path="/note/:noteId" element={<NoteEdit />} />
-          </Route>
-        </Routes>
-      </section>
-    </Router>
-  )
-  return (
-    <Router>
-      <section className="app">
-        <AppHeader />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/mail" element={<MailIndex />} />
-          <Route path="/mail/:mailId" element={<MailDetails />} />
           <Route path="/note" element={<NoteIndex />}>
             <Route path="/note/edit/:noteId" element={<NoteEdit />} />
             <Route path="/note/:noteId" element={<NoteDetails />} />
