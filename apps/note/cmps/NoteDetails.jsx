@@ -1,8 +1,7 @@
 const { useNavigate, useParams } = ReactRouterDOM
+const { useEffect, useState, useRef } = React
 import { noteService } from '../services/note.service.js'
 import { NotePreview } from './NotePreview.jsx'
-
-const { useEffect, useState, useRef } = React
 
 export function NoteDetails() {
     const [note, setNote] = useState(null)
@@ -39,15 +38,17 @@ export function NoteDetails() {
             >
                 <NotePreview note={note} />
 
-                <button
-                    className='btn-action'
-                    onClick={ev => {
-                        ev.stopPropagation()
-                        navigate(`/note/edit/${note.id}`)
-                    }}
-                >
-                    <i className='fa-solid fa-pen-to-square'></i>
-                </button>
+                {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && (
+                    <button
+                        className='btn-action'
+                        onClick={ev => {
+                            ev.stopPropagation()
+                            navigate(`/note/edit/${note.id}`)
+                        }}
+                    >
+                        <i className='fa-solid fa-pen-to-square'></i>
+                    </button>
+                )}
             </section>
         </React.Fragment>
     )

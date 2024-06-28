@@ -20,9 +20,13 @@ nav a:active {
 }
 
 nav a.active {
-    color: darkblue;
+    color: rgb(3, 44, 230);
     font-weight: bold;
     text-decoration: overline;
+}
+
+nav a:hover {
+    color: rgb(10, 10, 240);
 }
 
 .logo {

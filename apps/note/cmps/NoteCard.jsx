@@ -37,15 +37,17 @@ export function NoteCard({
             >
                 <i className='fa-solid fa-trash-can'></i>
             </button>
-            <button
-                className='btn-action'
-                onClick={e => {
-                    e.stopPropagation()
-                    handleEditClick(note.id)
-                }}
-            >
-                <i className='fa-solid fa-pen-to-square'></i>
-            </button>
+            {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && (
+                <button
+                    className='btn-action'
+                    onClick={e => {
+                        e.stopPropagation()
+                        handleEditClick(note.id)
+                    }}
+                >
+                    <i className='fa-solid fa-pen-to-square'></i>
+                </button>
+            )}
             <button
                 className='btn-action'
                 onClick={e => {

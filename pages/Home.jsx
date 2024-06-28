@@ -29,6 +29,12 @@ export function Home() {
                     onClick={() => navigate('/books')}
                 />
             </div>
+
+            <section className='img-container'>
+                <p>
+                    <h2></h2>
+                </p>
+            </section>
         </section>
     )
 }
