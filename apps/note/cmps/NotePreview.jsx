@@ -1,6 +1,4 @@
-import { eventBusService } from '../../../services/event-bus.service.js'
-
-const { useState, useEffect } = React
+const { useState } = React
 
 export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false }) {
     const [isPinned, setIsPinned] = useState(note.isPinned)

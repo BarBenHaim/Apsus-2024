@@ -62,10 +62,8 @@ export function NoteIndex() {
             )
             const updatedNote = updatedNotes.find(note => note.id === noteId)
             noteService.save(updatedNote).catch(err => {
-                console.log('Problems updating todo status:', err)
                 showErrorMsg('Having problems updating todo status!')
             })
-            eventBus.emit('todo-updated', { noteId, updatedTodos })
             return updatedNotes
         })
     }
