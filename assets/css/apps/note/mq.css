@@ -18,6 +18,10 @@
     .note-card {
         min-width: 200px;
     }
+
+    .btn-NoteCanvas {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 632px) {

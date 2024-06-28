@@ -74,6 +74,10 @@ export function NotePreview({ note, onPinChange, onTodoUpdate }) {
                     Your browser does not support the audio element.
                 </audio>
             )}
+
+            {note.type === 'NoteCanvas' && note.info.imgUrl && (
+                <img src={note.info.imgUrl} alt='Canvas Note' className='note-canvas' />
+            )}
         </article>
     )
 }

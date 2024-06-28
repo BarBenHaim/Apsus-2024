@@ -20,7 +20,7 @@ export function UserMsg() {
                 setIsClosing(true)
                 setAnimationDuration('0.5s')
                 setTimeout(closeMsg, 500)
-            }, 2000)
+            }, 2500)
         })
         return unsubscribe
     }, [])

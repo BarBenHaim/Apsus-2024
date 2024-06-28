@@ -31,6 +31,11 @@ export function NoteAdd({ addNote }) {
             placeholder: 'Add Audio...',
             icon: <i className='fa-solid fa-music'></i>,
         },
+        {
+            type: 'NoteCanvas',
+            placeholder: 'Add Canvas...',
+            icon: <i className='fa-solid fa-paintbrush'></i>,
+        },
     ]
 
     function onSetNoteType(type) {
@@ -48,6 +53,7 @@ export function NoteAdd({ addNote }) {
                                 title={`Enter ${btn.type.slice(4)}`}
                                 key={idx}
                                 type='button'
+                                className={`btn-${btn.type}`}
                                 onClick={() => onSetNoteType(btn.type)}
                             >
                                 {btn.icon}
