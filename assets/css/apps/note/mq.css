@@ -2,11 +2,31 @@
     .note-list {
         place-items: center;
     }
-    .note-card {
-        min-width: 235px;
+    .note-add {
+        max-width: 200px;
+
+        padding: 6px;
     }
-    iframe {
-        width: 235px;
-        height: 200px;
+
+    .note-add input {
+        padding: 5px;
+    }
+
+    .note-type-btns {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        padding: 5px;
+        width: 100%;
+    }
+    .note-card {
+        min-width: 200px;
+    }
+}
+
+@media screen and (min-width: 575px) {
+    .note-add {
+        justify-content: space-around;
+        padding: 10px;
     }
 }

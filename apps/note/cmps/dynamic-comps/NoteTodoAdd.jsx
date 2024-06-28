@@ -13,13 +13,8 @@ export function NoteTodoAdd({ todo, onChange, onRemove, onAdd }) {
 
     return (
         <section className='todo-task flex'>
-            <button className='add-todo' type='button' onClick={handleAddTodo} title='add another todo'>
-                <i className='fa-solid fa-plus'></i>{' '}
-            </button>
-            <button onClick={handleRemoveTodo} type='button' title='remove todo'>
-                <i className='fa-solid fa-trash-can'></i>
-            </button>
             <input
+                className='add-todo-input'
                 title='add a todo'
                 type='text'
                 placeholder='Enter todo...'
@@ -27,6 +22,14 @@ export function NoteTodoAdd({ todo, onChange, onRemove, onAdd }) {
                 value={todo.txt}
                 onChange={handleChange}
             />
+            <section className='todo-btns-container'>
+                <button className='add-todo' type='button' onClick={handleAddTodo} title='Add task'>
+                    <i className='fa-solid fa-plus'></i>{' '}
+                </button>
+                <button onClick={handleRemoveTodo} type='button' title='remove todo'>
+                    <i className='fa-solid fa-minus'></i>
+                </button>
+            </section>
         </section>
     )
 }

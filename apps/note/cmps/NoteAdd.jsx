@@ -1,7 +1,6 @@
-import { noteService } from '../services/note.service.js'
 import { NoteSetType } from './NoteSetType.jsx'
 
-const { useEffect, useState } = React
+const { useState } = React
 
 export function NoteAdd({ addNote }) {
     const [noteType, setNoteType] = useState('NoteTxt')
@@ -9,12 +8,12 @@ export function NoteAdd({ addNote }) {
     const typeBtns = [
         {
             type: 'NoteImg',
-            titplaceholderle: 'Add Image url...',
+            placeholder: 'Add Image url...',
             icon: <i className='fa-regular fa-image'></i>,
         },
         {
             type: 'NoteTxt',
-            placeholder: 'Add note...',
+            placeholder: 'Add Note...',
             icon: <i className='fa-regular fa-message'></i>,
         },
         {
@@ -26,6 +25,11 @@ export function NoteAdd({ addNote }) {
             type: 'NoteTodos',
             placeholder: 'Add Todos...',
             icon: <i className='fa-solid fa-list'></i>,
+        },
+        {
+            type: 'NoteAudio',
+            placeholder: 'Add Audio...',
+            icon: <i className='fa-solid fa-music'></i>,
         },
     ]
 

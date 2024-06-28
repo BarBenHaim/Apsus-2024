@@ -1,0 +1,11 @@
+.todo-btns-container {
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.todo-task {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
