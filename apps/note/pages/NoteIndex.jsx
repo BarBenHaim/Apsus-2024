@@ -106,7 +106,7 @@ export function NoteIndex() {
         addNote(duplicatedNote)
     }
 
-    if (!notes) return <div>Loading...</div>
+    if (!notes) return <img src='assets/loader/loader.svg' className='loader' />
     return (
         <section className='note-index'>
             <NoteFilter onSetFilterBy={onSetFilterBy} />
