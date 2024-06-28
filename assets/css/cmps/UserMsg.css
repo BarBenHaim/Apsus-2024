@@ -5,19 +5,20 @@
     align-items: center;
     background-color: lightgray;
     padding: 0.6em;
-    position: absolute;
+    position: fixed;
     border-radius: 10px;
-    top: 1em;
+    bottom: 1em;
     right: 1em;
+    z-index: 2;
     transition: opacity 0.3s ease-in-out;
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(213, 252, 213);
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    background-color: rgb(252, 189, 198);
 }
 
 .user-msg button {

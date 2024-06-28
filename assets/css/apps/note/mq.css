@@ -35,7 +35,7 @@
     }
     .note-list {
         column-width: 200px;
-        column-gap: 10px;
+        column-gap: 11px;
     }
     .note-card {
         max-width: 200px;
