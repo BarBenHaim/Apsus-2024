@@ -11,7 +11,7 @@ export function BookPreview({ book }) {
             <p>
                 <span className='bold-txt'>Currency:</span> {listPrice.currencyCode}
             </p>
-            {listPrice.isOnSale && <img className='on-sale-icon' src='../assets/booksImages/onSale.png.png' alt='' />}
+            {listPrice.isOnSale && <img className='on-sale-icon' src='assets/booksImages/onSale.png.png' alt='' />}
         </article>
     )
 }

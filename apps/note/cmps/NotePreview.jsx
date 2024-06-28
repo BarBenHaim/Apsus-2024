@@ -40,7 +40,7 @@ export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = f
         <article className='note-preview'>
             {!isFromDetails ? (
                 <img
-                    src={isPinned ? '../assets/img/pinFilled.svg' : '../assets/img/pinEmpty.svg'}
+                    src={isPinned ? 'assets/img/pinFilled.svg' : 'assets/img/pinEmpty.svg'}
                     className='pin-img'
                     onClick={handlePinClick}
                     alt='Pin'

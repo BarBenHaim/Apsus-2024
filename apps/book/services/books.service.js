@@ -201,7 +201,7 @@ function _createBooks() {
             description: utilService.makeLorem(20),
             pageCount: utilService.getRandomIntInclusive(20, 600),
             categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
-            thumbnail: `/assets/booksImages/${i + 1}.jpg`,
+            thumbnail: `assets/booksImages/${i + 1}.jpg`,
             language: 'en',
             listPrice: {
                 amount: utilService.getRandomIntInclusive(80, 500),
