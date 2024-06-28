@@ -3,6 +3,10 @@
         place-items: center;
     }
     .note-card {
-        min-width: 200px;
+        min-width: 235px;
+    }
+    iframe {
+        width: 235px;
+        height: 200px;
     }
 }

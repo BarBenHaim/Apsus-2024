@@ -76,21 +76,22 @@ function _createNotes() {
                 isPinned: true,
                 style: { backgroundColor: '#FFECB3' },
                 info: {
-                    title: 'Inspiring Speech',
-                    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                    title: 'Blinding Lights',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=F2eYTY9M4hg',
                 },
             },
+
             {
                 id: 'n102',
-                createdAt: 1622212232,
-                type: 'NoteVideo',
+                createdAt: 1622212237,
+                type: 'NoteTxt',
                 isPinned: true,
-                style: { backgroundColor: '#FFF9C4' },
+                style: { backgroundColor: '#FFCDD2' },
                 info: {
-                    title: 'Tech Talk',
-                    youtubeUrl: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ',
+                    txt: 'Plan vacation for next month, I really need a vacation its not for a demo data at all...',
                 },
             },
+
             {
                 id: 'n103',
                 createdAt: 1622212236,
@@ -169,14 +170,19 @@ function _createNotes() {
                     title: 'Beautiful Sunset',
                 },
             },
+
             {
                 id: 'n110',
-                createdAt: 1622212237,
-                type: 'NoteTxt',
+                createdAt: 1622212232,
+                type: 'NoteVideo',
                 isPinned: true,
-                style: { backgroundColor: '#FFCDD2' },
-                info: { txt: 'Plan vacation for next month.' },
+                style: { backgroundColor: '#FFF9C4' },
+                info: {
+                    title: 'Tech Talk',
+                    youtubeUrl: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ',
+                },
             },
+
             {
                 id: 'n111',
                 createdAt: 1622212239,

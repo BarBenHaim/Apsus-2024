@@ -4,7 +4,7 @@ import { NotePreview } from './NotePreview.jsx'
 
 const { useEffect, useState, useRef } = React
 
-export function NoteDetails({ onRemoveNote }) {
+export function NoteDetails() {
     const [note, setNote] = useState(null)
     const { noteId } = useParams()
     const navigate = useNavigate()
@@ -38,15 +38,7 @@ export function NoteDetails({ onRemoveNote }) {
                 }}
             >
                 <NotePreview note={note} />
-                <button
-                    className='btn-action'
-                    onClick={ev => {
-                        ev.stopPropagation()
-                        onRemoveNote(note.id)
-                    }}
-                >
-                    <i class='fa-solid fa-trash-can'></i>
-                </button>
+
                 <button
                     className='btn-action'
                     onClick={ev => {
@@ -54,7 +46,7 @@ export function NoteDetails({ onRemoveNote }) {
                         navigate(`/note/edit/${note.id}`)
                     }}
                 >
-                    <i class='fa-solid fa-pen-to-square'></i>
+                    <i className='fa-solid fa-pen-to-square'></i>
                 </button>
             </section>
         </React.Fragment>

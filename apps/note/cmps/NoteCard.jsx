@@ -3,7 +3,23 @@ import { NotePreview } from './NotePreview.jsx'
 
 const { useState } = React
 
-export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick, onPinChange }) {
+export function NoteCard({
+    note,
+    onRemoveNote,
+    handleEditClick,
+    handleNoteClick,
+    onPinChange,
+    onTodoUpdate,
+    onBgChange,
+    duplicateNote,
+}) {
+    const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
+
+    function handleColorSelect(color) {
+        onBgChange(note.id, color)
+        setIsColorPickerVisible(false)
+    }
+
     return (
         <article
             className='note-card'
@@ -11,7 +27,7 @@ export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick,
             key={note.id}
             style={{ backgroundColor: note.style.backgroundColor }}
         >
-            <NotePreview note={note} onPinChange={onPinChange} />
+            <NotePreview note={note} onPinChange={onPinChange} onTodoUpdate={onTodoUpdate} />
             <button
                 className='btn-action'
                 onClick={e => {
@@ -19,7 +35,7 @@ export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick,
                     onRemoveNote(note.id)
                 }}
             >
-                <i class='fa-solid fa-trash-can'></i>
+                <i className='fa-solid fa-trash-can'></i>
             </button>
             <button
                 className='btn-action'
@@ -28,11 +44,27 @@ export function NoteCard({ note, onRemoveNote, handleEditClick, handleNoteClick,
                     handleEditClick(note.id)
                 }}
             >
-                <i class='fa-solid fa-pen-to-square'></i>
+                <i className='fa-solid fa-pen-to-square'></i>
             </button>
-            <button className='btn-action' onClick={() => console.log(note.id)}>
-                <i class='fa-solid fa-palette'></i>
+            <button
+                className='btn-action'
+                onClick={e => {
+                    e.stopPropagation()
+                    setIsColorPickerVisible(!isColorPickerVisible)
+                }}
+            >
+                <i className='fa-solid fa-palette'></i>
             </button>
+            <button
+                className='btn-action'
+                onClick={e => {
+                    e.stopPropagation()
+                    duplicateNote(note.id)
+                }}
+            >
+                <i className='fa-solid fa-copy'></i>
+            </button>
+            {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
         </article>
     )
 }

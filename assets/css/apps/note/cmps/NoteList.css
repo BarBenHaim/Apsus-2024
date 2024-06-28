@@ -1,6 +1,6 @@
 .note-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 10px;
 }
 
@@ -9,11 +9,16 @@
     border-radius: 20px;
     padding: 8px;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, background-color 0.4s;
     height: fit-content;
     max-width: 200px;
 }
 
 .note-card:hover {
     transform: translateY(-3px);
+}
+
+.notes-title {
+    text-align: center;
+    padding: 20px;
 }

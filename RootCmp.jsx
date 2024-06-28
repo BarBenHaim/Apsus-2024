@@ -7,6 +7,7 @@ import { NoteDetails } from './apps/note/cmps/NoteDetails.jsx'
 import { NoteEdit } from './apps/note/cmps/NoteEdit.jsx'
 import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
+import { Footer } from './cmps/Footer.jsx'
 import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 
@@ -29,6 +30,7 @@ export function App() {
                     </Route>
                 </Routes>
             </section>
+            <Footer />
         </Router>
     )
 }

@@ -35,24 +35,6 @@ export function NoteSetFormByType({ note, handleChange }) {
                 <div className='todos-edit-form'>
                     <label>Title:</label>
                     <input type='text' name='info.title' value={note.info.title || ''} onChange={handleChange} />
-                    <label>Todos:</label>
-                    {note.info.todos &&
-                        note.info.todos.map((todo, idx) => (
-                            <div key={todo.id}>
-                                <input
-                                    type='text'
-                                    name={`info.todos.${idx}.txt`}
-                                    value={todo.txt}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    type='checkbox'
-                                    name={`info.todos.${idx}.doneAt`}
-                                    checked={!!todo.doneAt}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        ))}
                 </div>
             )
         default:

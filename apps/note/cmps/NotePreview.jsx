@@ -1,7 +1,8 @@
-const { useState, useEffect } = React
+const { useState } = React
 
-export function NotePreview({ note, onPinChange }) {
+export function NotePreview({ note, onPinChange, onTodoUpdate }) {
     const [isPinned, setIsPinned] = useState(note.isPinned)
+    const [todos, setTodos] = useState(note.info.todos)
 
     function handlePinClick(ev) {
         ev.stopPropagation()
@@ -10,13 +11,25 @@ export function NotePreview({ note, onPinChange }) {
         onPinChange(note.id, newIsPinned)
     }
 
+    function toggleLineThrough(todoId, ev) {
+        ev.stopPropagation()
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === todoId) {
+                return { ...todo, doneAt: todo.doneAt ? null : Date.now() }
+            }
+            return todo
+        })
+        setTodos(updatedTodos)
+        onTodoUpdate(note.id, updatedTodos)
+    }
+
     return (
         <article className='note-preview'>
             <img
                 src={isPinned ? '../assets/img/pinFilled.svg' : '../assets/img/pinEmpty.svg'}
                 className='pin-img'
                 onClick={handlePinClick}
-            ></img>
+            />
 
             <h2 className='note-title'>{note.info.title || ''}</h2>
             {note.type === 'NoteImg' && note.info.imgUrl && <img src={note.info.imgUrl} alt='Note Image' />}
@@ -27,22 +40,26 @@ export function NotePreview({ note, onPinChange }) {
                     height='180'
                     src={note.info.youtubeUrl.replace('watch?v=', 'embed/')}
                     title='Note Video'
-                    border='none'
+                    frameBorder='none'
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                 ></iframe>
             )}
-
-            {note.type === 'NoteTodos' && note.info.todos && (
+            {note.type === 'NoteTodos' && todos && (
                 <ul>
-                    {note.info.todos.map(todo => (
-                        <li key={todo.id}>
-                            <span>{todo.txt}</span> {todo.doneAt ? '✔' : '❌'}
+                    {todos.map(todo => (
+                        <li key={todo.id} onClick={ev => toggleLineThrough(todo.id, ev)}>
+                            <span
+                                style={{
+                                    textDecoration: todo.doneAt ? 'line-through' : 'none',
+                                }}
+                            >
+                                {todo.txt}
+                            </span>
                         </li>
                     ))}
                 </ul>
             )}
-            <p className='note-date'>Created at: {new Date(note.createdAt).toLocaleDateString()}</p>
         </article>
     )
 }
