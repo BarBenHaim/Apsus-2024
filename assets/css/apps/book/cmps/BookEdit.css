@@ -1,0 +1,28 @@
+.book-edit {
+    justify-self: center;
+    margin-block-start: 30px;
+    padding: 20px;
+    background-color: rgba(180, 188, 204, 0.514);
+}
+
+.book-edit form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    width: 400px;
+    gap: 10px;
+    margin-block-start: 20px;
+}
+
+.book-edit form input {
+    width: 200px;
+}
+
+.book-edit form button {
+    justify-self: center;
+    grid-column: 1/-1;
+}
+
+.book-edit h2 {
+    margin-block-end: 20px;
+}

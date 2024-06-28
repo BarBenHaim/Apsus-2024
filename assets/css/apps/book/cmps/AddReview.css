@@ -1,0 +1,84 @@
+.review-add {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #474e5d7a;
+    padding-top: 50px;
+}
+
+.review-add .review-modal {
+    position: relative;
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    width: 30%;
+    text-align: center;
+    min-width: 400px;
+    padding: 20px;
+}
+
+.review-modal h1 {
+    background-color: #4f60c0;
+    color: white;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.review-modal textarea {
+    display: block;
+    margin: 20px auto;
+    resize: none;
+}
+
+.review-form input,
+.review-form button {
+    margin: 5px;
+}
+
+.review-add .btn-toggle-modal {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 7px;
+    margin: 0;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.review-container {
+    width: 90%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.review-details {
+    position: relative;
+    border: 2px solid #e4e4e4;
+    border-radius: 10px;
+    margin-block-start: 10px;
+    padding: 10px;
+    line-height: 1.5;
+    font-size: 1.3rem;
+}
+
+.review-details h5 {
+    color: #000000;
+}
+
+.review-details .btn-remove-review {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin: 5px;
+    font-size: 1rem;
+    border: 2px solid #bb8082;
+    border-radius: 50%;
+}
+
+.review-container p {
+    max-width: 90%;
+    word-wrap: break-word;
+}

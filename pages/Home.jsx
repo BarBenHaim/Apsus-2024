@@ -26,7 +26,7 @@ export function Home() {
                     alt='Google Books Logo'
                     className='icon animate__animated animate__bounceIn'
                     style={{ animationDelay: '1.2s' }}
-                    onClick={() => navigate('/books')}
+                    onClick={() => navigate('/book')}
                 />
             </div>
 

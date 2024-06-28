@@ -6,6 +6,8 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    animateCSS,
+    debounce,
 }
 
 function makeId(length = 6) {
@@ -102,4 +104,29 @@ function getMonthName(date) {
         'December',
     ]
     return monthNames[date.getMonth()]
+}
+
+function animateCSS(el, animation = 'bounce') {
+    const prefix = 'animate__'
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+        function handleAnimationEnd(event) {
+            event.stopPropagation()
+            el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
+}
+
+function debounce(callback, wait) {
+    let timeoutId = null
+    return (...args) => {
+        window.clearTimeout(timeoutId)
+        timeoutId = window.setTimeout(() => {
+            callback(...args)
+        }, wait)
+    }
 }

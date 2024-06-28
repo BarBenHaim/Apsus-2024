@@ -1,0 +1,30 @@
+.add-book-title {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.google-search-list {
+    display: flex;
+    flex-direction: column;
+    list-style: circle;
+}
+
+.google-search-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-block-end: 5px;
+    padding: 5px;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+    background-color: rgb(206, 206, 206);
+}
+
+.google-search-list li:hover {
+    background: linear-gradient(to right, rgb(106 145 228), rgb(142 134 215 / 49%));
+    border-radius: 10px;
+}
