@@ -36,6 +36,11 @@ export function NoteAdd({ addNote }) {
             placeholder: 'Add Canvas...',
             icon: <i className='fa-solid fa-paintbrush'></i>,
         },
+        {
+            type: 'NoteLocation',
+            placeholder: 'Add Location...',
+            icon: <i className='fa-solid fa-location-dot'></i>,
+        },
     ]
 
     function onSetNoteType(type) {

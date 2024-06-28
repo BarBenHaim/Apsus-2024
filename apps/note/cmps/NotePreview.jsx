@@ -1,8 +1,21 @@
-const { useState } = React
+const { useState, useEffect } = React
 
-export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false }) {
+export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false, isFromEdit = false }) {
     const [isPinned, setIsPinned] = useState(note.isPinned)
     const [todos, setTodos] = useState(note.info.todos || [])
+
+    useEffect(() => {
+        if (note.type === 'NoteLocation' && note.info.location) {
+            const map = new google.maps.Map(document.getElementById(`map-${note.id}`), {
+                center: { lat: note.info.location.lat, lng: note.info.location.lng },
+                zoom: 8,
+            })
+            new google.maps.Marker({
+                position: { lat: note.info.location.lat, lng: note.info.location.lng },
+                map,
+            })
+        }
+    }, [note])
 
     function handlePinClick(ev) {
         ev.stopPropagation()
@@ -81,6 +94,10 @@ export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = f
 
             {note.type === 'NoteCanvas' && note.info.imgUrl && (
                 <img src={note.info.imgUrl} alt='Canvas Note' className='note-canvas' />
+            )}
+
+            {note.type === 'NoteLocation' && note.info.location && (
+                <div className='note-location' style={{ width: '100%', height: '200px' }} id={`map-${note.id}`}></div>
             )}
         </article>
     )

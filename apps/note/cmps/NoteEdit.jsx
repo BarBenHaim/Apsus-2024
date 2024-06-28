@@ -96,7 +96,7 @@ export function NoteEdit() {
                 <button className='btn-close-edit' onClick={handleCloseEdit}>
                     x
                 </button>
-                <NotePreview note={noteToEdit} />
+                <NotePreview note={noteToEdit} isFromEdit={true} />
                 <form onSubmit={onSaveNote}>
                     <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
                     {!isLoading ? (

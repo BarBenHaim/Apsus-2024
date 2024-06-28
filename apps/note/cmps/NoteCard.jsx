@@ -37,7 +37,7 @@ export function NoteCard({
             >
                 <i className='fa-solid fa-trash-can'></i>
             </button>
-            {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && (
+            {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && note.type !== 'NoteLocation' && (
                 <button
                     className='btn-action'
                     onClick={e => {
