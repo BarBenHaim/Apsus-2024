@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     justify-content: center;
     place-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .books-list ul li {
@@ -17,11 +17,12 @@
     border-radius: 15px;
     gap: 10px;
     padding: 10px;
-    background-color: rgb(216, 235, 235);
-}
-
-.books-list ul li {
-    opacity: 0.8;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(53, 53, 53);
+    box-shadow: -2px 4px 4px 0px rgb(104, 103, 103);
+    border-radius: 20px;
+    padding: 20px;
+    transform: rotate(-10deg);
 }
 
 .close {

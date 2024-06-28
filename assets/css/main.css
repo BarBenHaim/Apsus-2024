@@ -51,8 +51,6 @@
 @import './apps/note/mq.css';
 
 /* Books */
-
-/* Components */
 @import './apps/book/cmps/AddBook.css';
 @import './apps/book/cmps/AddReview.css';
 @import './apps/book/cmps/BookDetails.css';
