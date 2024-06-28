@@ -1,6 +1,6 @@
+const { useState } = React
 import { noteService } from '../../services/note.service.js'
 
-const { useState } = React
 export function NoteAudio({ addNote, type }) {
     const [noteInfo, setNoteInfo] = useState({ title: '', audioUrl: '' })
 
@@ -41,7 +41,6 @@ export function NoteAudio({ addNote, type }) {
                 value={noteInfo.title}
             />
             <label className='btn-add-audio'>
-                {' '}
                 Add audio
                 <input
                     title='Add audio file'
@@ -53,6 +52,11 @@ export function NoteAudio({ addNote, type }) {
                     onChange={handleFileChange}
                 />
             </label>
+            {noteInfo.audioUrl && (
+                <audio controls src={noteInfo.audioUrl}>
+                    Your browser does not support the audio element.
+                </audio>
+            )}
         </form>
     )
 }

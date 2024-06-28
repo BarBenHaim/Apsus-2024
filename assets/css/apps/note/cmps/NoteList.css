@@ -1,9 +1,3 @@
-.note-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
-}
-
 .note-card {
     border: 1px solid lightgray;
     border-radius: 20px;
@@ -11,7 +5,8 @@
     cursor: pointer;
     transition: transform 0.5s ease, background-color 0.4s;
     height: fit-content;
-    max-width: 200px;
+    break-inside: avoid;
+    margin-bottom: 10px;
 }
 
 .note-card:hover {
