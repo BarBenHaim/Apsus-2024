@@ -1,5 +1,5 @@
-const { useNavigate, useParams, useLocation } = ReactRouterDOM
-const { useState, useEffect } = React
+const { useNavigate, useParams } = ReactRouterDOM
+const { useState, useEffect, useRef } = React
 import { showSuccessMsg, eventBusService } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
 import { NotePreview } from './NotePreview.jsx'
@@ -10,9 +10,22 @@ export function NoteEdit() {
     const navigate = useNavigate()
     const { noteId } = useParams()
     const [isLoading, setIsLoading] = useState(false)
+    const editRef = useRef()
+
     useEffect(() => {
         if (noteId) loadNote()
-    }, [noteId])
+
+        const handleClickOutside = event => {
+            if (editRef.current && !editRef.current.contains(event.target)) {
+                navigate('/note')
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [noteId, navigate])
 
     function loadNote() {
         noteService
@@ -45,11 +58,9 @@ export function NoteEdit() {
             case 'range':
                 value = +value
                 break
-
             case 'checkbox':
                 value = target.checked
                 break
-
             default:
                 break
         }
@@ -73,26 +84,30 @@ export function NoteEdit() {
     }
 
     return (
-        <section
-            className='note-edit'
-            style={{
-                backgroundColor: noteToEdit.style.backgroundColor,
-            }}
-        >
-            <button className='btn-close-edit' onClick={handleCloseEdit}>
-                x
-            </button>
-            <NotePreview note={noteToEdit} />
-            <form onSubmit={onSaveNote}>
-                <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
-                {!isLoading ? (
-                    <button type='submit' className='btn-edit-submit'>
-                        Save Note
-                    </button>
-                ) : (
-                    <div>loading...</div>
-                )}
-            </form>
-        </section>
+        <React.Fragment>
+            <div className='backdrop'></div>
+            <section
+                className='note-edit'
+                ref={editRef}
+                style={{
+                    backgroundColor: noteToEdit.style.backgroundColor,
+                }}
+            >
+                <button className='btn-close-edit' onClick={handleCloseEdit}>
+                    x
+                </button>
+                <NotePreview note={noteToEdit} />
+                <form onSubmit={onSaveNote}>
+                    <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
+                    {!isLoading ? (
+                        <button type='submit' className='btn-edit-submit'>
+                            Save Note
+                        </button>
+                    ) : (
+                        <div>Loading...</div>
+                    )}
+                </form>
+            </section>
+        </React.Fragment>
     )
 }
