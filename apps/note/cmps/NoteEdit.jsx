@@ -1,6 +1,6 @@
-const { useNavigate, useParams } = ReactRouterDOM
+const { useNavigate, useParams, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
-import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showSuccessMsg, eventBusService } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
 import { NotePreview } from './NotePreview.jsx'
 import { NoteSetFormByType } from './NoteSetFormByType.jsx'
@@ -9,7 +9,7 @@ export function NoteEdit() {
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
     const navigate = useNavigate()
     const { noteId } = useParams()
-
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         if (noteId) loadNote()
     }, [noteId])
@@ -26,8 +26,12 @@ export function NoteEdit() {
         noteService
             .save(noteToEdit)
             .then(() => {
-                navigate('/note')
-                showSuccessMsg('Note saved successfully!')
+                eventBusService.emit('edit-notes')
+                setIsLoading(true)
+                setTimeout(() => {
+                    navigate('/note')
+                    showSuccessMsg('Note saved successfully!')
+                }, 500)
             })
             .catch(err => console.log('err:', err))
     }
@@ -81,9 +85,13 @@ export function NoteEdit() {
             <NotePreview note={noteToEdit} />
             <form onSubmit={onSaveNote}>
                 <NoteSetFormByType note={noteToEdit} handleChange={handleChange} />
-                <button type='submit' className='btn-edit-submit'>
-                    Save Note
-                </button>
+                {!isLoading ? (
+                    <button type='submit' className='btn-edit-submit'>
+                        Save Note
+                    </button>
+                ) : (
+                    <div>loading...</div>
+                )}
             </form>
         </section>
     )

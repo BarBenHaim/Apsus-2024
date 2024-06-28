@@ -1,5 +1,5 @@
 import { UserMsg } from '../../../cmps/UserMsg.jsx'
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg, eventBusService } from '../../../services/event-bus.service.js'
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
@@ -10,10 +10,24 @@ const { useEffect, useState } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-
+    console.log('rendered')
     useEffect(() => {
         loadNotes()
     }, [filterBy])
+
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('edit-notes', () => {
+            loadNotes()
+        })
+        return unsubscribe
+    }, [])
+
+    // useEffect(() => {
+    //     const unsubscribe = eventBusService.on('edit-notes', () => {
+    //         loadNotes()
+    //     })
+    //     return unsubscribe
+    // }, [])
 
     function onSetFilterBy(txt) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...txt }))
@@ -66,13 +80,10 @@ export function NoteIndex() {
         setNotes(prevNotes => {
             const updatedNotes = prevNotes.map(note => (note.id === noteId ? { ...note, isPinned } : note))
             const updatedNote = updatedNotes.find(note => note.id === noteId)
-            noteService
-                .save(updatedNote)
-
-                .catch(err => {
-                    console.log('Problems updating pin status:', err)
-                    showErrorMsg('Having problems updating pin status!')
-                })
+            noteService.save(updatedNote).catch(err => {
+                console.log('Problems updating pin status:', err)
+                showErrorMsg('Having problems updating pin status!')
+            })
             return updatedNotes
         })
     }

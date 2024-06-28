@@ -1,10 +1,18 @@
 import { NoteCard } from './NoteCard.jsx'
 const { useNavigate, Outlet } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote, loadNotes, onPinChange, onTodoUpdate, onBgChange, duplicateNote }) {
+export function NoteList({
+    notes,
+    onRemoveNote,
+    loadNotes,
+    onPinChange,
+    onTodoUpdate,
+    onBgChange,
+    duplicateNote,
+    updateNote,
+}) {
     const pinnedNotes = notes.filter(note => note.isPinned === true)
     const nonPinnedNotes = notes.filter(note => note.isPinned !== true)
-
     const navigate = useNavigate()
 
     if (!notes.length) return <div>No notes found...</div>
