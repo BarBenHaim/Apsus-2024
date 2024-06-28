@@ -34,7 +34,7 @@ export function NoteAdd({ addNote }) {
     }
 
     return (
-        <section className='note-add'>
+        <section className='note-add animate__animated animate__fadeInLeft'>
             {noteType && (
                 <React.Fragment>
                     <NoteSetType addNote={addNote} type={noteType} />

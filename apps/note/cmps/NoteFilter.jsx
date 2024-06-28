@@ -9,7 +9,7 @@ export function NoteFilter({ onSetFilterBy }) {
     }
 
     return (
-        <section className='note-filter flex column'>
+        <section className='note-filter flex column animate__animated animate__fadeInLeft'>
             <button
                 className={`btn-filter ${activeFilter === 'All' ? 'active' : ''}`}
                 onClick={() => handleFilterChange('All')}

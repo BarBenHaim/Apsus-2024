@@ -7,6 +7,7 @@ import { NoteSearchFilter } from '../cmps/NoteSearchFilter.jsx'
 import { noteService } from '../services/note.service.js'
 
 const { useEffect, useState } = React
+
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())

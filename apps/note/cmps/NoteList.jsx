@@ -27,8 +27,10 @@ export function NoteList({
 
     return (
         <React.Fragment>
-            <h2 className='pinned-notes-title notes-title'>Pinned Notes</h2>
-            <section className='pinned-note-list note-list no-notes'>
+            <h2 className='pinned-notes-title notes-title animate__animated animate__fadeIn animate__delay-.8s'>
+                Pinned Notes
+            </h2>
+            <section className='pinned-note-list note-list no-notes animate__animated animate__slideInUp'>
                 {pinnedNotes.length ? (
                     pinnedNotes.map(note => (
                         <NoteCard
@@ -48,8 +50,10 @@ export function NoteList({
                     <div className='no-notes'>No pinned notes yet...</div>
                 )}
             </section>
-            <h2 className='unpinned-notes-title notes-title'>Notes</h2>
-            <section className='unpinned-note-list note-list'>
+            <h2 className='unpinned-notes-title notes-title animate__animated animate__fadeIn animate__delay-.8s'>
+                Notes
+            </h2>
+            <section className='unpinned-note-list note-list animate__animated animate__slideInUp'>
                 {nonPinnedNotes.length ? (
                     nonPinnedNotes.map(note => (
                         <NoteCard
