@@ -31,10 +31,14 @@ function query(filterBy = getDefaultFilter()) {
                 return textMatch || titleMatch
             })
         }
+
+        if (filterBy.type && filterBy.type !== 'All') {
+            notes = notes.filter(note => note.type === filterBy.type)
+        }
+
         return notes
     })
 }
-
 function get(noteId) {
     return storageService.get(NOTE_KEY, noteId)
 }

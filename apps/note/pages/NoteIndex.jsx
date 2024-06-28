@@ -10,7 +10,6 @@ const { useEffect, useState } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-    console.log('rendered')
     useEffect(() => {
         loadNotes()
     }, [filterBy])
@@ -21,13 +20,6 @@ export function NoteIndex() {
         })
         return unsubscribe
     }, [])
-
-    // useEffect(() => {
-    //     const unsubscribe = eventBusService.on('edit-notes', () => {
-    //         loadNotes()
-    //     })
-    //     return unsubscribe
-    // }, [])
 
     function onSetFilterBy(txt) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...txt }))
@@ -116,7 +108,7 @@ export function NoteIndex() {
     if (!notes) return <div>Loading...</div>
     return (
         <section className='note-index'>
-            <NoteFilter />
+            <NoteFilter onSetFilterBy={onSetFilterBy} />
             <div>
                 <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <NoteAdd addNote={addNote} />
