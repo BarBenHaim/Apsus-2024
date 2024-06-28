@@ -65,6 +65,7 @@ export function NoteIndex() {
                 console.log('Problems updating todo status:', err)
                 showErrorMsg('Having problems updating todo status!')
             })
+            eventBus.emit('todo-updated', { noteId, updatedTodos })
             return updatedNotes
         })
     }

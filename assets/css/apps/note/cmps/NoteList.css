@@ -1,3 +1,7 @@
+.unpinned-note-list {
+    margin-block-end: 50px;
+}
+
 .note-card {
     border: 1px solid lightgray;
     border-radius: 20px;
@@ -6,7 +10,7 @@
     transition: transform 0.5s ease, background-color 0.4s;
     height: fit-content;
     break-inside: avoid;
-    margin-bottom: 15px;
+    margin-block-end: 15px;
 }
 
 .note-card:hover {

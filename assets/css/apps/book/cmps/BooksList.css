@@ -17,7 +17,7 @@
     border-radius: 15px;
     gap: 10px;
     padding: 10px;
-    background-color: rgb(253, 248, 227);
+    background-color: rgb(216, 235, 235);
 }
 
 .books-list ul li {
@@ -45,4 +45,16 @@
 .on-sale-icon {
     width: 50%;
     object-fit: contain;
+}
+
+.books-container button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: 0.4s;
+}
+
+.books-container * {
+    font-family: Lato;
 }

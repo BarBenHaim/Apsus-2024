@@ -36,7 +36,7 @@ export function NoteDetails() {
                     backgroundColor: note.style.backgroundColor,
                 }}
             >
-                <NotePreview note={note} />
+                <NotePreview note={note} isFromDetails={true} />
 
                 {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && (
                     <button

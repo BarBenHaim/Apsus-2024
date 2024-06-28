@@ -14,12 +14,12 @@ export function BookList({ books, onRemove }) {
                         <nav className='book-nav'>
                             <Link to={`/book/${book.id}`}>
                                 <button>
-                                    <i className='fa-solid fa-circle-info'></i>Details
+                                    <i className='fa-solid fa-circle-info'></i>
                                 </button>
                             </Link>
                             <Link to={`/book/edit/${book.id}`}>
                                 <button>
-                                    <i className='fa-solid fa-pen-to-square'>Edit</i>
+                                    <i className='fa-solid fa-pen-to-square'></i>
                                 </button>
                             </Link>
                         </nav>

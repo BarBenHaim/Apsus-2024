@@ -1,6 +1,8 @@
-const { useState } = React
+import { eventBusService } from '../../../services/event-bus.service.js'
 
-export function NotePreview({ note, onPinChange, onTodoUpdate }) {
+const { useState, useEffect } = React
+
+export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false }) {
     const [isPinned, setIsPinned] = useState(note.isPinned)
     const [todos, setTodos] = useState(note.info.todos || [])
 
@@ -25,12 +27,16 @@ export function NotePreview({ note, onPinChange, onTodoUpdate }) {
 
     return (
         <article className='note-preview'>
-            <img
-                src={isPinned ? '../assets/img/pinFilled.svg' : '../assets/img/pinEmpty.svg'}
-                className='pin-img'
-                onClick={handlePinClick}
-                alt='Pin'
-            />
+            {!isFromDetails ? (
+                <img
+                    src={isPinned ? '../assets/img/pinFilled.svg' : '../assets/img/pinEmpty.svg'}
+                    className='pin-img'
+                    onClick={handlePinClick}
+                    alt='Pin'
+                />
+            ) : (
+                ''
+            )}
 
             <h2 className='note-title'>{note.info.title || ''}</h2>
 

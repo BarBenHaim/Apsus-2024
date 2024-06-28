@@ -43,6 +43,7 @@
 @import './apps/note/cmps/ColorPicker.css';
 @import './apps/note/cmps/NoteAudio.css';
 @import './apps/note/cmps/NoteTodo.css';
+@import './apps/note/cmps/Loader.css';
 @import './apps/note/pages/NoteIndex.css';
 
 /* Notes MQ */

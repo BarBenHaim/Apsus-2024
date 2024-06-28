@@ -31,11 +31,9 @@ export function BookIndex() {
                 navigate('/book')
             })
     }
-
     const { minPrice, title, maxPrice } = filterBy
     return (
         <div className='books-container'>
-            <h2>Books list</h2>
             <BookFilter filterBy={{ minPrice, title }} onFilterBy={onSetFilterBy} />
             <BookFilterMaxPrice filterBy={{ maxPrice }} onFilterBy={onSetFilterBy} />
             <Link to='/book/edit'>
