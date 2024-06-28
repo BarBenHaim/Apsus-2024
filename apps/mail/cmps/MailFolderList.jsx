@@ -1,17 +1,15 @@
 export function MailFolder({
-  onNewMail,
+  onOpenCompose,
   mails,
-  filretSentMails,
+  getSentMails,
   getInbox,
-  filterStarMails,
+  getStarredMails,
 }) {
   return (
     <section className="folder-container">
-      <h1> folder</h1>
-
       <div className="btn-container">
-        <button onClick={onNewMail} className="compose-btn">
-          <i className="fa-solid fa-pencil"></i>New mail
+        <button onClick={onOpenCompose} className="compose-btn">
+          <i className="fa-solid fa-pencil"></i>Compose
         </button>
       </div>
 
@@ -20,10 +18,10 @@ export function MailFolder({
           <i className="fa-solid fa-inbox"></i>Inbox
           <p>{mails.length}</p>
         </div>
-        <div onClick={() => filterStarMails(mails)}>
-          <i className="fa-regular fa-star"></i>Starrted
+        <div onClick={() => getStarredMails()}>
+          <i className="fa-regular fa-star"></i>Starred
         </div>
-        <div onClick={() => filretSentMails(mails)}>
+        <div onClick={() => getSentMails()}>
           <i className="fa-regular fa-paper-plane"></i> Sent
         </div>
         <div>

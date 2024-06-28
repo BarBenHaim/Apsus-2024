@@ -1,6 +1,6 @@
 const { useState } = React
 
-export function MailModal({ closeModal, crateMail }) {
+export function MailModal({ closeModal, onCompose }) {
   const [to, setTo] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
@@ -31,51 +31,41 @@ export function MailModal({ closeModal, crateMail }) {
           <div className="modal-body">
             <form>
               <div>
-                <label htmlFor="to">To:</label>
                 <br />
                 <input
                   onChange={(ev) => handleChange(ev)}
                   type="email"
+                  placeholder="
+                  To"
                   id="to"
                   name="to"
-                  style={{
-                    width: '100%',
-                    padding: '8px',
-                    marginBottom: '10px',
-                  }}
                 />
               </div>
               <div>
-                <label htmlFor="subject">Subject:</label>
                 <br />
                 <input
                   onChange={(ev) => handleChangeSublect(ev)}
                   type="text"
                   id="subject"
                   name="subject"
-                  style={{
-                    width: '100%',
-                    padding: '8px',
-                    marginBottom: '10px',
-                  }}
+                  placeholder="Subject"
                 />
               </div>
               <div>
-                <label htmlFor="body">Body:</label>
                 <br />
                 <textarea
                   onChange={(ev) => handleChaneMessage(ev)}
                   id="body"
                   name="body"
                   rows="10"
-                  style={{ width: '100%', padding: '8px' }}
+                  placeholder="body"
                 ></textarea>
               </div>
             </form>
           </div>
           <div className="modal-footer">
             <button
-              onClick={() => crateMail(to, subject, message)}
+              onClick={() => onCompose(to, subject, message)}
               className="compose-button"
             >
               Send

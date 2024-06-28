@@ -4,16 +4,24 @@ import { utilService } from '../../../services/util.service.js'
 
 const MAIL_KEY = 'mailDB'
 let gMails = _createMails()
-// console.log(gMails)
 
 export const mailService = {
   query,
   remove,
   get,
   createNewMail,
+  getDefaultFilter,
+  getRelativeTime,
+  save,
 }
-function query() {
-  return storageService.query(MAIL_KEY).then()
+function query(filterBy = {}) {
+  return storageService.query(MAIL_KEY).then((mails) => {
+    if (filterBy.txt) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.from))
+    }
+    return mails
+  })
 }
 
 function remove(mailId) {
@@ -24,14 +32,21 @@ function get(mailId) {
   return storageService.get(MAIL_KEY, mailId).then()
 }
 
+function getDefaultFilter() {
+  return { txt: '' }
+}
+
+function save(mails) {
+  localStorageService.saveToStorage(MAIL_KEY, mails)
+}
 function createNewMail(to, sub, body) {
   let mails = localStorageService.loadFromStorage(MAIL_KEY)
   let newMail = {
     id: utilService.makeId(),
-    createdAt: '2024-06-27T12:00:00Z',
+    createdAt: new Date().toISOString(),
     subject: sub,
     body: body,
-    isStar: false,
+    isStarred: false,
     sentAt: 1551133930594,
     removedAt: null,
     from: 'fakironir@gmail.com',
@@ -39,7 +54,7 @@ function createNewMail(to, sub, body) {
   }
   mails.push(newMail)
   localStorageService.saveToStorage(MAIL_KEY, mails)
-  return mails
+  return Promise.resolve(mails)
 }
 function _createMails() {
   let mails = localStorageService.loadFromStorage(MAIL_KEY)
@@ -51,10 +66,10 @@ function _createMails() {
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
-        from: 'yuval@gmail.com',
+        from: 'fakironir@gmail.com',
         to: 'user@appsus.com',
       },
       {
@@ -63,7 +78,7 @@ function _createMails() {
         subject: 'Udemy',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'guy@gmail.com',
@@ -75,7 +90,7 @@ function _createMails() {
         subject: 'Udemy',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'shani@gmail.com',
@@ -87,7 +102,7 @@ function _createMails() {
         subject: 'Test',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'ruti@gmail.com',
@@ -99,7 +114,7 @@ function _createMails() {
         subject: 'Work',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'tal@gmail.com',
@@ -111,7 +126,7 @@ function _createMails() {
         subject: 'weekend',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'linoy@gmail.com',
@@ -123,7 +138,7 @@ function _createMails() {
         subject: ' Hotel',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'moshe@gmail.com',
@@ -135,7 +150,7 @@ function _createMails() {
         subject: 'Alljob',
         body: 'Lets start learning and getting to know the programming language',
         isRead: false,
-        isStar: false,
+        isStarred: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: 'ram@gmail.com',
@@ -145,6 +160,36 @@ function _createMails() {
     localStorageService.saveToStorage(MAIL_KEY, mails)
   }
   return mails
+}
+
+function getRelativeTime(date) {
+  const now = new Date()
+  const diff = now - new Date(date) // Difference in milliseconds
+
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+
+  if (days > 5) {
+    const dateObj = new Date(date)
+    const day = dateObj.getDate().toString().padStart(2, '0')
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0')
+    const year = dateObj.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
+  if (days < 1) {
+    const dateObj = new Date(date)
+    const hours = dateObj.getHours().toString().padStart(2, '0')
+    const minutes = dateObj.getMinutes().toString().padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
+
+  if (seconds < 60) return `${seconds} seconds ago`
+  if (minutes < 60) return `${minutes} minutes ago`
+  if (hours < 24) return `${hours} hours ago`
+  return `${days} days ago`
 }
 // const loggedinUser = {
 //   email: 'user@appsus.com',

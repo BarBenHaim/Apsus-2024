@@ -1,18 +1,32 @@
-export function MailFilter() {
+const { useState, useEffect } = React
+
+export function MailFilter({ filterBy, onSetFilterBy }) {
+  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+
+  useEffect(() => {
+    onSetFilterBy(filterByToEdit)
+  }, [filterByToEdit])
+
+  function handleChange({ target }) {
+    const value = target.value
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, txt: value }))
+  }
+
+  const { txt } = filterByToEdit
   return (
     <section className="filter-container">
-      <h1>Email filter</h1>
-      <div className="search-mail">
-        <i className="fa-solid fa-magnifying-glass"></i>
+      <form className="search-mail">
+        {/* <i className="fa-solid fa-magnifying-glass"></i> */}
         <input
+          value={txt}
+          onChange={handleChange}
           type="text"
-          placeholder="Search mails..."
-          // value={searchTerm}
-          // onChange={handleChange}
-          // onKeyPress={handleKeyPress}
+          placeholder="Search "
+          id="txt"
+          name="txt"
         />
-        {/* <button onClick={handleSearch}>Search</button> */}
-      </div>
+        {/* <button hidden>Set Filter</button> */}
+      </form>
     </section>
   )
 }

@@ -13,13 +13,14 @@
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
-  text-align: start;
+  justify-items: start;
   align-items: center;
+  justify-content: flex-start;
   letter-spacing: normal;
   height: 5px;
 }
 .folder-item i {
-  padding: 10px;
+  padding: 20px;
 }
 
 .folder-item :hover {
@@ -36,6 +37,7 @@
 
   border: none;
   border-radius: 24px;
+  margin-bottom: 55px;
 
   padding: 12px 24px;
   font-size: 16px;

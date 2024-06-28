@@ -16,29 +16,60 @@ const loggedinUser = {
 export function MailIndex() {
   const params = useParams()
   const [mails, setMails] = useState(null)
-  const [filterMail, setfilterMail] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(null)
+  const [filterbyFolder, setFilterByFolder] = useState(null)
+
+  const [filterBy, setFilterBy] = useState({ from: '' })
   const mailId = params.mailId
 
   useEffect(() => {
-    mailService.query().then((mails) => {
+    mailService.query(filterBy).then((mails) => {
       setMails(mails)
-      setfilterMail(mails)
+      setFilterByFolder(mails)
 
-      const filteredMails = mails.filter(
+      const inboxMails = mails.filter(
         (mail) => mail.from !== loggedinUser.email
       )
-      setfilterMail(filteredMails)
+      setFilterByFolder(inboxMails)
     })
-  }, [])
+  }, [filterBy])
+
+  function onCompose(to, subject, message) {
+    mailService.createNewMail(to, subject, message).then((newMails) => {
+      setMails(newMails)
+      setFilterByFolder(
+        newMails.filter((mail) => mail.from !== loggedinUser.email)
+      )
+      closeModal()
+    })
+  }
 
   function getInbox() {
-    const filteredMails = mails.filter(
-      (mail) => mail.from !== loggedinUser.email
-    )
+    const inboxMails = mails.filter((mail) => mail.from !== loggedinUser.email)
+    setFilterByFolder(inboxMails)
+    return inboxMails
+  }
 
-    setfilterMail(filteredMails)
-    return filteredMails
+  function getSentMails() {
+    const sentMails = mails.filter((mail) => mail.from === loggedinUser.email)
+    setFilterByFolder(sentMails)
+    return sentMails
+  }
+
+  function getStarredMails() {
+    const starMails = mails.filter((mail) => mail.isStarred)
+    setFilterByFolder(starMails)
+    return starMails
+  }
+
+  function onStar(ev, mailId) {
+    ev.preventDefault()
+    const updatedMails = mails.map((mail) =>
+      mail.id === mailId ? { ...mail, isStarred: !mail.isStarred } : mail
+    )
+    setFilterByFolder(updatedMails)
+    setMails(updatedMails)
+    mailService.save(updatedMails)
   }
 
   function onRemoveMail(ev, mailId) {
@@ -46,34 +77,13 @@ export function MailIndex() {
     mailService
       .remove(mailId)
       .then(() => {
-        setMails((prevMail) => prevMail.filter((mail) => mail.id !== mailId))
+        setFilterByFolder((prevMail) =>
+          prevMail.filter((mail) => mail.id !== mailId)
+        )
       })
       .catch((err) => {
         console.log('err:', err)
       })
-  }
-
-  function filretSentMails(mails) {
-    const filteredMails = mails.filter(
-      (mail) => mail.from === loggedinUser.email
-    )
-    setfilterMail(filteredMails)
-    return filteredMails
-  }
-
-  function filterStarMails() {
-    const starMails = mails.filter((mail) => mail.isStar)
-    setfilterMail(starMails)
-    return starMails
-  }
-  function onStar(ev, mailId) {
-    ev.preventDefault()
-    setMails((prevMails) =>
-      prevMails.map((mail) =>
-        mail.id === mailId ? (mail.isStar = true) : (mail.isStar = false)
-      )
-    )
-    console.log(mails)
   }
 
   function onRead(mailId) {
@@ -85,7 +95,7 @@ export function MailIndex() {
     })
   }
 
-  function onNewMail() {
+  function onOpenCompose() {
     setIsModalOpen(true)
   }
 
@@ -96,18 +106,18 @@ export function MailIndex() {
   if (!mails) return <div>Loading...</div>
   return (
     <section className="mail-layout">
-      <MailFilter />
+      <MailFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
       <MailFolder
         mails={mails}
-        onNewMail={onNewMail}
-        filretSentMails={filretSentMails}
+        onOpenCompose={onOpenCompose}
+        getSentMails={getSentMails}
         getInbox={getInbox}
-        filterStarMails={filterStarMails}
+        getStarredMails={getStarredMails}
       />
 
       {!mailId && (
         <MailList
-          mails={filterMail}
+          mails={filterbyFolder}
           onRemoveMail={onRemoveMail}
           onRead={onRead}
           onStar={onStar}
@@ -115,10 +125,7 @@ export function MailIndex() {
       )}
       {mailId && <Outlet />}
       {isModalOpen && (
-        <MailModal
-          closeModal={closeModal}
-          crateMail={mailService.createNewMail}
-        />
+        <MailModal closeModal={closeModal} onCompose={onCompose} />
       )}
     </section>
   )
