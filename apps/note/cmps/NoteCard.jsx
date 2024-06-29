@@ -23,7 +23,7 @@ export function NoteCard({
     return (
         <article
             className='note-card'
-            onClick={() => handleNoteClick(note.id)}
+            onClick={note.type !== 'NoteLocation' ? () => handleNoteClick(note.id) : undefined}
             key={note.id}
             style={{ backgroundColor: note.style.backgroundColor }}
         >
@@ -37,15 +37,17 @@ export function NoteCard({
             >
                 <i className='fa-solid fa-trash-can'></i>
             </button>
-            <button
-                className='btn-action'
-                onClick={e => {
-                    e.stopPropagation()
-                    handleEditClick(note.id)
-                }}
-            >
-                <i className='fa-solid fa-pen-to-square'></i>
-            </button>
+            {note.type !== 'NoteAudio' && note.type !== 'NoteCanvas' && note.type !== 'NoteLocation' && (
+                <button
+                    className='btn-action'
+                    onClick={e => {
+                        e.stopPropagation()
+                        handleEditClick(note.id)
+                    }}
+                >
+                    <i className='fa-solid fa-pen-to-square'></i>
+                </button>
+            )}
             <button
                 className='btn-action'
                 onClick={e => {

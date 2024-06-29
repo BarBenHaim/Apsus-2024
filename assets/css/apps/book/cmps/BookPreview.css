@@ -1,0 +1,28 @@
+.book-prev {
+    display: grid;
+    justify-items: center;
+    gap: 5px;
+}
+
+.on-sale-icon {
+    position: absolute;
+    width: 100px;
+    top: 20%;
+    transform: rotate(-30deg);
+    right: 0px;
+    bottom: 0px;
+}
+
+.read-more {
+    color: rgb(130, 130, 177);
+}
+
+.read-more:hover {
+    cursor: pointer;
+}
+
+.book-nav {
+    display: flex;
+    align-self: center;
+    gap: 5px;
+}

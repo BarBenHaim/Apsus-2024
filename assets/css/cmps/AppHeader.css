@@ -1,6 +1,9 @@
 header {
-    background: lightcyan;
+    background: rgba(224, 255, 255, 0.95);
     border-bottom: 2px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .app-header {
@@ -9,20 +12,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
-}
-
-nav a {
-    margin: 0.5em;
-}
-
-nav a:active {
-    color: purple;
-}
-
-nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
 }
 
 .logo {
@@ -54,6 +43,22 @@ nav a.active {
     color: #ea4335;
 }
 
-.app-header nav a {
+nav a {
+    margin: 0.5em;
     margin-right: 15px;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.btn-toggle-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.hamburger-lines {
+    font-size: 20px;
 }

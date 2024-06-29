@@ -22,3 +22,8 @@ iframe {
     width: 100%;
     object-fit: cover;
 }
+
+audio {
+    max-width: 180px;
+    height: 40px;
+}

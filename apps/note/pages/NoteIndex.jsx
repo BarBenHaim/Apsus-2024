@@ -5,29 +5,28 @@ import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { NoteSearchFilter } from '../cmps/NoteSearchFilter.jsx'
 import { noteService } from '../services/note.service.js'
-
 const { useEffect, useState } = React
+
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-    console.log('rendered')
+
     useEffect(() => {
         loadNotes()
     }, [filterBy])
 
     useEffect(() => {
-        const unsubscribe = eventBusService.on('edit-notes', () => {
+        const unsubscribeEditNotes = eventBusService.on('edit-notes', () => {
             loadNotes()
         })
-        return unsubscribe
+        const unsubscribeTodoUpdated = eventBusService.on('todoUpdated', () => {
+            loadNotes()
+        })
+        return () => {
+            unsubscribeEditNotes()
+            unsubscribeTodoUpdated()
+        }
     }, [])
-
-    // useEffect(() => {
-    //     const unsubscribe = eventBusService.on('edit-notes', () => {
-    //         loadNotes()
-    //     })
-    //     return unsubscribe
-    // }, [])
 
     function onSetFilterBy(txt) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...txt }))
@@ -69,9 +68,9 @@ export function NoteIndex() {
             )
             const updatedNote = updatedNotes.find(note => note.id === noteId)
             noteService.save(updatedNote).catch(err => {
-                console.log('Problems updating todo status:', err)
                 showErrorMsg('Having problems updating todo status!')
             })
+
             return updatedNotes
         })
     }
@@ -113,10 +112,10 @@ export function NoteIndex() {
         addNote(duplicatedNote)
     }
 
-    if (!notes) return <div>Loading...</div>
+    if (!notes) return <img src='assets/loader/loader.svg' className='loader' />
     return (
         <section className='note-index'>
-            <NoteFilter />
+            <NoteFilter onSetFilterBy={onSetFilterBy} />
             <div>
                 <NoteSearchFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <NoteAdd addNote={addNote} />

@@ -70,7 +70,6 @@ export function NoteTodos({ addNote, type }) {
                     id='title'
                     value={noteTitle}
                 />
-
                 {todos.map(todo => (
                     <NoteTodoAdd
                         key={todo.id}

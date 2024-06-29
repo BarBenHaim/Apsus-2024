@@ -14,7 +14,7 @@ export function NoteSearchFilter({ onSetFilterBy, filterBy }) {
     }
 
     return (
-        <section className='note-search-filter'>
+        <section className='note-search-filter animate__animated animate__fadeInRight'>
             <input
                 title='search note'
                 type='search'

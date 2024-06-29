@@ -3,17 +3,24 @@ const { useState, useEffect, useRef } = React
 
 export function UserMsg() {
     const [msg, setMsg] = useState(null)
+    const [isClosing, setIsClosing] = useState(false)
+    const [animationDuration, setAnimationDuration] = useState('.5s')
     const timeoutIdRef = useRef()
 
     useEffect(() => {
         const unsubscribe = eventBusService.on('show-user-msg', msg => {
-            console.log('Got msg', msg)
             setMsg(msg)
+            setIsClosing(false)
+            setAnimationDuration('.5s')
             if (timeoutIdRef.current) {
                 timeoutIdRef.current = null
                 clearTimeout(timeoutIdRef.current)
             }
-            timeoutIdRef.current = setTimeout(closeMsg, 3000)
+            timeoutIdRef.current = setTimeout(() => {
+                setIsClosing(true)
+                setAnimationDuration('0.5s')
+                setTimeout(closeMsg, 500)
+            }, 2500)
         })
         return unsubscribe
     }, [])
@@ -24,7 +31,10 @@ export function UserMsg() {
 
     if (!msg) return <span></span>
     return (
-        <section className={`user-msg ${msg.type}`}>
+        <section
+            className={`user-msg ${msg.type} animate__animated ${isClosing ? 'animate__fadeOut' : 'animate__fadeIn'}`}
+            style={{ animationDuration }}
+        >
             <button onClick={closeMsg}>x</button>
             {msg.txt}
         </section>

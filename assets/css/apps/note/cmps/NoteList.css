@@ -1,7 +1,5 @@
-.note-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
+.unpinned-note-list {
+    margin-block-end: 50px;
 }
 
 .note-card {
@@ -11,7 +9,8 @@
     cursor: pointer;
     transition: transform 0.5s ease, background-color 0.4s;
     height: fit-content;
-    max-width: 200px;
+    break-inside: avoid;
+    margin-block-end: 15px;
 }
 
 .note-card:hover {
