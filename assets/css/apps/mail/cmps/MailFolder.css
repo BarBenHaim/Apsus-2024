@@ -1,69 +1,69 @@
 .folder-container {
-  color: #000000;
-  background-color: #f6f8fc;
+    color: #000000;
+    background-color: #f6f8fc;
 }
 
 .folder-item > div {
-  display: flex;
-  padding: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s, border-radius 0.3s;
+    display: flex;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s;
 
-  font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 20px;
-  justify-items: start;
-  align-items: center;
-  justify-content: flex-start;
-  letter-spacing: normal;
-  height: 5px;
+    font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    justify-items: start;
+    align-items: center;
+    justify-content: flex-start;
+    letter-spacing: normal;
+    height: 5px;
 }
 .folder-item i {
-  padding: 5px;
+    padding: 5px;
 }
 
 .folder-item :hover {
-  background-color: #1558b015;
-  border-radius: 5px;
+    background-color: #1558b015;
+    border-radius: 5px;
 }
 .folder-item .selected {
-  background-color: #1558b015;
-  border-radius: 5px;
+    background-color: #1558b015;
+    border-radius: 5px;
 }
 
 .compose-btn {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  background-color: #f2f6fc;
-  color: #202124;
+    background-color: #f2f6fc;
+    color: #202124;
 
-  border: none;
-  border-radius: 24px;
-  margin-bottom: 55px;
+    border: none;
+    border-radius: 24px;
+    margin-bottom: 55px;
 
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 500;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
 
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 .compose-btn:hover {
-  background-color: #1558b015;
+    background-color: #1558b015;
 }
 .compose-btn i {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 .hamburger-btn {
-  display: none;
-  position: fixed;
-  top: 150px;
-  left: 10px;
-  z-index: 1000;
-  background: none;
-  border: none;
-  font-size: 24px;
+    display: none;
+    position: fixed;
+    top: 150px;
+    left: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 24px;
 }

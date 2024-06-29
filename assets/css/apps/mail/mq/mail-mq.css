@@ -1,46 +1,53 @@
 @media (max-width: 600px) {
-  .mail-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 5fr;
-    gap: 10px;
-    height: 100vh;
-  }
-  .filter-container {
-    position: fixed;
-    z-index: 1;
-  }
+    .mail-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 5fr;
+        gap: 10px;
+        height: 100vh;
+    }
+    .filter-container {
+        position: fixed;
+        z-index: 1;
+        margin-top: 50px;
+        top: 20px;
+    }
 
-  .list-container {
-    grid-column: 1 / -2;
-    grid-row: 2 / 3;
+    .list-container {
+        grid-column: 1 / -2;
+        grid-row: 2 / 3;
 
-    padding: 20px;
-    overflow-y: auto;
-  }
-  .mail-preview {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .mail-preview {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
 
-  .compose-btn {
-    position: fixed;
-    bottom: 10px;
-    left: 80%;
-    z-index: 1;
-    transform: translateX(-50%);
-    max-width: 300px;
-  }
+    .compose-btn {
+        position: fixed;
+        bottom: 10px;
+        left: 80%;
+        z-index: 1;
+        transform: translateX(-50%);
+        max-width: 300px;
+    }
 
-  .folder-item > div {
-    display: none;
-  }
-  .mail-details {
-    position: absolute;
+    .folder-item {
+        position: fixed;
+        z-index: 1;
+        background-color: #f6f8fc;
+        width: 90%;
+        margin-block-start: 25px;
+        display: flex;
+    }
+    .mail-details {
+        position: absolute;
 
-    left: 10px;
-  }
+        left: 10px;
+    }
 }

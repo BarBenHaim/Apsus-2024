@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 const { useSearchParams } = ReactRouterDOM
-export function MailModal({ closeModal, onCompose }) {
+export function MailModal({ closeModal, onCompose, onOpenCompose }) {
     const [to, setTo] = useState('')
     const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
@@ -16,6 +16,7 @@ export function MailModal({ closeModal, onCompose }) {
         if (body) {
             setMessage(body)
         }
+        onOpenCompose()
     }, [])
 
     function handleChange(ev) {

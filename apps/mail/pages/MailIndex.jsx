@@ -4,139 +4,132 @@ import { MailModal } from '../cmps/MailModal.jsx'
 import { MailFolder } from '../cmps/MailFolderList.jsx'
 
 import { mailService } from '../services/mail.service.js'
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { useParams, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 
 const loggedinUser = {
-  email: 'fakironir@gmail.com',
-  fullname: 'Mahatma Appsus',
+    email: 'fakironir@gmail.com',
+    fullname: 'Mahatma Appsus',
 }
 
 export function MailIndex() {
-  const params = useParams()
-  const [mails, setMails] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(null)
-  const [filterbyFolder, setFilterByFolder] = useState(null)
+    const params = useParams()
+    const [mails, setMails] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(null)
+    const [filterbyFolder, setFilterByFolder] = useState(null)
 
-  const [filterBy, setFilterBy] = useState({ from: '' })
-  const mailId = params.mailId
+    const [filterBy, setFilterBy] = useState({ from: '' })
+    const mailId = params.mailId
 
-  useEffect(() => {
-    mailService.query(filterBy).then((mails) => {
-      setMails(mails)
-      setFilterByFolder(mails)
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('open-compose', () => {
+            onOpenCompose()
+        })
+        return () => {
+            unsubscribe
+        }
+    }, [])
 
-      const inboxMails = mails.filter(
-        (mail) => mail.from !== loggedinUser.email
-      )
-      setFilterByFolder(inboxMails)
-      setSelectedFloder(true)
-    })
-  }, [filterBy])
+    useEffect(() => {
+        mailService.query(filterBy).then(mails => {
+            setMails(mails)
+            setFilterByFolder(mails)
 
-  function onCompose(to, subject, message) {
-    mailService.createNewMail(to, subject, message).then((newMails) => {
-      setMails(newMails)
-      setFilterByFolder(
-        newMails.filter((mail) => mail.from !== loggedinUser.email)
-      )
-      closeModal()
-    })
-  }
+            const inboxMails = mails.filter(mail => mail.from !== loggedinUser.email)
+            setFilterByFolder(inboxMails)
+            setSelectedFloder(true)
+        })
+    }, [filterBy])
 
-  function getInbox() {
-    const inboxMails = mails.filter((mail) => mail.from !== loggedinUser.email)
-    setFilterByFolder(inboxMails)
+    function onCompose(to, subject, message) {
+        mailService.createNewMail(to, subject, message).then(newMails => {
+            setMails(newMails)
+            setFilterByFolder(newMails.filter(mail => mail.from !== loggedinUser.email))
+            closeModal()
+        })
+    }
 
-    return inboxMails
-  }
+    function getInbox() {
+        const inboxMails = mails.filter(mail => mail.from !== loggedinUser.email)
+        setFilterByFolder(inboxMails)
 
-  function getSentMails() {
-    const sentMails = mails.filter((mail) => mail.from === loggedinUser.email)
-    setFilterByFolder(sentMails)
+        return inboxMails
+    }
 
-    return sentMails
-  }
+    function getSentMails() {
+        const sentMails = mails.filter(mail => mail.from === loggedinUser.email)
+        setFilterByFolder(sentMails)
 
-  function getStarredMails() {
-    const starMails = mails.filter((mail) => mail.isStarred)
-    setFilterByFolder(starMails)
-    return starMails
-  }
+        return sentMails
+    }
 
-  function onStar(ev, mailId) {
-    ev.preventDefault()
-    const updatedMails = mails.map((mail) =>
-      mail.id === mailId ? { ...mail, isStarred: !mail.isStarred } : mail
+    function getStarredMails() {
+        const starMails = mails.filter(mail => mail.isStarred)
+        setFilterByFolder(starMails)
+        return starMails
+    }
+
+    function onStar(ev, mailId) {
+        ev.preventDefault()
+        const updatedMails = mails.map(mail => (mail.id === mailId ? { ...mail, isStarred: !mail.isStarred } : mail))
+        // setFilterByFolder(updatedMails)
+        setMails(updatedMails)
+        mailService.save(updatedMails)
+    }
+
+    function onRemoveMail(ev, mailId) {
+        ev.preventDefault()
+        mailService
+            .remove(mailId)
+            .then(() => {
+                setFilterByFolder(prevMail => prevMail.filter(mail => mail.id !== mailId))
+            })
+            .catch(err => {
+                console.log('err:', err)
+            })
+    }
+
+    function onRead(mailId) {
+        mails.map(mail => {
+            if (mail.id === mailId) {
+                mail.isRead = true
+            }
+            return mails
+        })
+    }
+
+    function onOpenCompose() {
+        setIsModalOpen(true)
+    }
+
+    function closeModal() {
+        setIsModalOpen(false)
+    }
+
+    function toggleFolder() {
+        console.log('fi')
+
+        setIsFolderOpen(!isFolderOpen)
+    }
+
+    if (!mails) return <img src='assets/loader/loader.svg' className='loader' />
+    return (
+        <section className='mail-layout'>
+            <MailFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
+
+            <MailFolder
+                mails={mails}
+                onOpenCompose={onOpenCompose}
+                getSentMails={getSentMails}
+                getInbox={getInbox}
+                getStarredMails={getStarredMails}
+            />
+
+            {!mailId && <MailList mails={filterbyFolder} onRemoveMail={onRemoveMail} onRead={onRead} onStar={onStar} />}
+            {mailId && <Outlet />}
+            {isModalOpen && <MailModal closeModal={closeModal} onCompose={onCompose} onOpenCompose={onOpenCompose} />}
+        </section>
     )
-    // setFilterByFolder(updatedMails)
-    setMails(updatedMails)
-    mailService.save(updatedMails)
-  }
-
-  function onRemoveMail(ev, mailId) {
-    ev.preventDefault()
-    mailService
-      .remove(mailId)
-      .then(() => {
-        setFilterByFolder((prevMail) =>
-          prevMail.filter((mail) => mail.id !== mailId)
-        )
-      })
-      .catch((err) => {
-        console.log('err:', err)
-      })
-  }
-
-  function onRead(mailId) {
-    mails.map((mail) => {
-      if (mail.id === mailId) {
-        mail.isRead = true
-      }
-      return mails
-    })
-  }
-
-  function onOpenCompose() {
-    setIsModalOpen(true)
-  }
-
-  function closeModal() {
-    setIsModalOpen(false)
-  }
-
-  function toggleFolder() {
-    console.log('fi')
-
-    setIsFolderOpen(!isFolderOpen)
-  }
-
-  if (!mails) return <img src="assets/loader/loader.svg" className="loader" />
-  return (
-    <section className="mail-layout">
-      <MailFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
-
-      <MailFolder
-        mails={mails}
-        onOpenCompose={onOpenCompose}
-        getSentMails={getSentMails}
-        getInbox={getInbox}
-        getStarredMails={getStarredMails}
-      />
-
-      {!mailId && (
-        <MailList
-          mails={filterbyFolder}
-          onRemoveMail={onRemoveMail}
-          onRead={onRead}
-          onStar={onStar}
-        />
-      )}
-      {mailId && <Outlet />}
-      {isModalOpen && (
-        <MailModal closeModal={closeModal} onCompose={onCompose} />
-      )}
-    </section>
-  )
 }
