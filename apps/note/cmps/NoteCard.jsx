@@ -1,7 +1,7 @@
 import { ColorPicker } from './ColorPicker.jsx'
 import { NotePreview } from './NotePreview.jsx'
-const { Link } = ReactRouterDOM
 
+const { Link } = ReactRouterDOM
 const { useState } = React
 
 export function NoteCard({
@@ -93,11 +93,13 @@ export function NoteCard({
                 <i className='fa-solid fa-copy'></i>
             </button>
             {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
-            <Link
-                to={getMailComposeUrl(note)}
-                className='note-mail-btn fa-regular fa-paper-plane'
-                onClick={handleLinkClick}
-            ></Link>
+            <button className='btn-action'>
+                <Link
+                    to={getMailComposeUrl(note)}
+                    className='note-mail-btn fa-solid fa-paper-plane'
+                    onClick={handleLinkClick}
+                ></Link>
+            </button>
         </article>
     )
 }

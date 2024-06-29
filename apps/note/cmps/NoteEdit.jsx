@@ -1,5 +1,6 @@
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect, useRef } = React
+
 import { showSuccessMsg, eventBusService } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
 import { NotePreview } from './NotePreview.jsx'

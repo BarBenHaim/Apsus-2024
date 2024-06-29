@@ -6,7 +6,7 @@ import { MailFolder } from '../cmps/MailFolderList.jsx'
 import { mailService } from '../services/mail.service.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
 
-const { useParams, Outlet } = ReactRouterDOM
+const { useParams, Outlet, useSearchParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 const loggedinUser = {
@@ -16,21 +16,21 @@ const loggedinUser = {
 
 export function MailIndex() {
     const params = useParams()
+    const [searchParams] = useSearchParams()
+    const sub = searchParams.get('subject')
+    const body = searchParams.get('body')
+
     const [mails, setMails] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(null)
     const [filterbyFolder, setFilterByFolder] = useState(null)
-
     const [filterBy, setFilterBy] = useState({ from: '' })
     const mailId = params.mailId
 
     useEffect(() => {
-        const unsubscribe = eventBusService.on('open-compose', () => {
+        if (sub || body) {
             onOpenCompose()
-        })
-        return () => {
-            unsubscribe
         }
-    }, [])
+    }, [sub, body])
 
     useEffect(() => {
         mailService.query(filterBy).then(mails => {
@@ -74,7 +74,6 @@ export function MailIndex() {
     function onStar(ev, mailId) {
         ev.preventDefault()
         const updatedMails = mails.map(mail => (mail.id === mailId ? { ...mail, isStarred: !mail.isStarred } : mail))
-        // setFilterByFolder(updatedMails)
         setMails(updatedMails)
         mailService.save(updatedMails)
     }
