@@ -31,6 +31,7 @@
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 @import './cmps/Footer.css';
+@import './cmps/About.css';
 
 /* Notes */
 @import './apps/note/cmps/NoteAdd.css';
