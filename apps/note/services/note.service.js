@@ -10,9 +10,17 @@ export const noteService = {
     save,
     getEmptyNote,
     getDefaultFilter,
+    createNoteFromEmail,
 }
 
 _createNotes()
+
+function createNoteFromEmail(subject, body) {
+    const note = getEmptyNote()
+    note.info.title = subject || ''
+    note.info.txt = body || ''
+    return save(note)
+}
 
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(NOTE_KEY).then(notes => {

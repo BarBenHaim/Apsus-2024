@@ -43,7 +43,7 @@ export function NoteCard({
             body = note.info.youtubeUrl || 'No Content'
         }
 
-        return `/mail/compose?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        return `/mail?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     }
 
     return (
