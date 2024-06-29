@@ -1,5 +1,6 @@
 import { ColorPicker } from './ColorPicker.jsx'
 import { NotePreview } from './NotePreview.jsx'
+const { Link } = ReactRouterDOM
 
 const { useState } = React
 
@@ -18,6 +19,31 @@ export function NoteCard({
     function handleColorSelect(color) {
         onBgChange(note.id, color)
         setIsColorPickerVisible(false)
+    }
+
+    function handleLinkClick(ev) {
+        ev.stopPropagation()
+    }
+
+    function getMailComposeUrl(note) {
+        let subject = 'No Subject'
+        let body = 'No Content'
+
+        if (note.type === 'NoteTxt') {
+            subject = note.info.title || 'No Subject'
+            body = note.info.txt || 'No Content'
+        } else if (note.type === 'NoteTodos') {
+            subject = note.info.title || 'No Subject'
+            body = note.info.todos.map(todo => todo.txt).join(', ') || 'No Content'
+        } else if (note.type === 'NoteImg') {
+            subject = note.info.title || 'No Subject'
+            body = note.info.imgUrl || 'No Content'
+        } else if (note.type === 'NoteVideo') {
+            subject = note.info.title || 'No Subject'
+            body = note.info.youtubeUrl || 'No Content'
+        }
+
+        return `/mail/compose?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     }
 
     return (
@@ -67,6 +93,11 @@ export function NoteCard({
                 <i className='fa-solid fa-copy'></i>
             </button>
             {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
+            <Link
+                to={getMailComposeUrl(note)}
+                className='note-mail-btn fa-regular fa-paper-plane'
+                onClick={handleLinkClick}
+            ></Link>
         </article>
     )
 }
