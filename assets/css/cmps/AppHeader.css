@@ -12,24 +12,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
-}
-
-nav a {
-    margin: 0.5em;
-}
-
-nav a:active {
-    color: purple;
-}
-
-nav a.active {
-    color: rgb(3, 44, 230);
-    font-weight: bold;
-    text-decoration: overline;
-}
-
-nav a:hover {
-    color: rgb(10, 10, 240);
+    width: 100%;
 }
 
 .logo {
@@ -61,6 +44,22 @@ nav a:hover {
     color: #ea4335;
 }
 
-.app-header nav a {
+nav a {
+    margin: 0.5em;
     margin-right: 15px;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.btn-toggle-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.hamburger-lines {
+    font-size: 20px;
 }

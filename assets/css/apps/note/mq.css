@@ -22,6 +22,58 @@
     .btn-NoteCanvas {
         display: none;
     }
+    .btn-toggle-menu {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        justify-content: center;
+        padding: 20px;
+        border-bottom: 1px solid #ececec;
+        transition: background-color 0.3s;
+    }
+
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    nav a:hover {
+        background-color: rgb(10, 175, 240);
+        color: #ffffff;
+    }
+
+    nav a.active {
+        color: rgb(3, 44, 230);
+        font-weight: bold;
+    }
+
+    .app-header.menu-open nav {
+        display: flex;
+    }
+
+    .btn-toggle-menu {
+        margin-top: auto;
+        margin-inline-end: 20px;
+    }
 }
 
 @media screen and (max-width: 632px) {
@@ -43,5 +95,17 @@
     }
     .note-card {
         max-width: 200px;
+    }
+
+    nav a.active {
+        color: rgb(3, 44, 230);
+        font-weight: bold;
+    }
+
+    nav a.active {
+        text-decoration: overline;
+    }
+    nav a:hover {
+        color: rgb(10, 10, 240);
     }
 }
