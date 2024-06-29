@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false, isFromEdit = false }) {
+export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = false }) {
     const [isPinned, setIsPinned] = useState(note.isPinned)
     const [todos, setTodos] = useState(note.info.todos || [])
 

@@ -31,9 +31,7 @@ export function Home() {
             </div>
 
             <section className='img-container'>
-                <p>
-                    <h2></h2>
-                </p>
+                <p></p>
             </section>
         </section>
     )

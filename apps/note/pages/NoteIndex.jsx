@@ -5,21 +5,27 @@ import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { NoteSearchFilter } from '../cmps/NoteSearchFilter.jsx'
 import { noteService } from '../services/note.service.js'
-
 const { useEffect, useState } = React
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+
     useEffect(() => {
         loadNotes()
     }, [filterBy])
 
     useEffect(() => {
-        const unsubscribe = eventBusService.on('edit-notes', () => {
+        const unsubscribeEditNotes = eventBusService.on('edit-notes', () => {
             loadNotes()
         })
-        return unsubscribe
+        const unsubscribeTodoUpdated = eventBusService.on('todoUpdated', () => {
+            loadNotes()
+        })
+        return () => {
+            unsubscribeEditNotes()
+            unsubscribeTodoUpdated()
+        }
     }, [])
 
     function onSetFilterBy(txt) {
@@ -64,6 +70,7 @@ export function NoteIndex() {
             noteService.save(updatedNote).catch(err => {
                 showErrorMsg('Having problems updating todo status!')
             })
+
             return updatedNotes
         })
     }

@@ -23,7 +23,7 @@ export function NoteCard({
     return (
         <article
             className='note-card'
-            onClick={() => handleNoteClick(note.id)}
+            onClick={note.type !== 'NoteLocation' ? () => handleNoteClick(note.id) : undefined}
             key={note.id}
             style={{ backgroundColor: note.style.backgroundColor }}
         >
