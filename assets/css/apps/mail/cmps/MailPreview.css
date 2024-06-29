@@ -36,7 +36,6 @@
 }
 .preview-btn i:hover {
   opacity: 1;
-  background-color: #1558b015;
   border-radius: 50%;
   box-shadow: rgba(100, 121, 143, 0.12) 0px -2px 0px 0px inset;
 }

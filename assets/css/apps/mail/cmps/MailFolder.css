@@ -20,10 +20,14 @@
   height: 5px;
 }
 .folder-item i {
-  padding: 20px;
+  padding: 5px;
 }
 
 .folder-item :hover {
+  background-color: #1558b015;
+  border-radius: 5px;
+}
+.folder-item .selected {
   background-color: #1558b015;
   border-radius: 5px;
 }

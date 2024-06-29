@@ -11,6 +11,8 @@
 @import './apps/mail/cmps/MailFolder.css';
 @import './apps/mail/cmps/MailDetails.css';
 @import './apps/mail/cmps/MailModal.css';
+/* mq */
+@import './apps/mail/mq/folder.css';
 
 /* @import '/apps/mail/cmps/MailModal.css'; */
 

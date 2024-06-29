@@ -191,7 +191,3 @@ function getRelativeTime(date) {
   if (hours < 24) return `${hours} hours ago`
   return `${days} days ago`
 }
-// const loggedinUser = {
-//   email: 'user@appsus.com',
-//   fullname: 'Mahatma Appsus',
-// }

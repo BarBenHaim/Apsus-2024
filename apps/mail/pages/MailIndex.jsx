@@ -18,6 +18,7 @@ export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(null)
   const [filterbyFolder, setFilterByFolder] = useState(null)
+  const [selectedFolder, setSelectedFloder] = useState(false)
 
   const [filterBy, setFilterBy] = useState({ from: '' })
   const mailId = params.mailId
@@ -31,6 +32,7 @@ export function MailIndex() {
         (mail) => mail.from !== loggedinUser.email
       )
       setFilterByFolder(inboxMails)
+      setSelectedFloder(true)
     })
   }, [filterBy])
 
@@ -47,12 +49,14 @@ export function MailIndex() {
   function getInbox() {
     const inboxMails = mails.filter((mail) => mail.from !== loggedinUser.email)
     setFilterByFolder(inboxMails)
+
     return inboxMails
   }
 
   function getSentMails() {
     const sentMails = mails.filter((mail) => mail.from === loggedinUser.email)
     setFilterByFolder(sentMails)
+
     return sentMails
   }
 
@@ -67,7 +71,7 @@ export function MailIndex() {
     const updatedMails = mails.map((mail) =>
       mail.id === mailId ? { ...mail, isStarred: !mail.isStarred } : mail
     )
-    setFilterByFolder(updatedMails)
+    // setFilterByFolder(updatedMails)
     setMails(updatedMails)
     mailService.save(updatedMails)
   }

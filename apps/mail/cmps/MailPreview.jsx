@@ -22,9 +22,10 @@ export function MailPreview({ mail, onRemoveMail, onStar }) {
         <section className="preview-btn">
           <i className="fa-regular fa-share-from-square"></i>
           <i className="fa-regular fa-envelope-open"></i>
+
           <i
             onClick={(ev) => onRemoveMail(ev, mail.id)}
-            className="fa-regular fa-trash-can"
+            className="fa-regular fa-trash-can stat-icon"
           ></i>
         </section>
       </div>
