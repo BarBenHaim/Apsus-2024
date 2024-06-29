@@ -19,6 +19,13 @@
     padding: 20px;
     overflow-y: auto;
   }
+  .mail-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
 
   .compose-btn {
     position: fixed;
@@ -29,18 +36,20 @@
     max-width: 300px;
   }
 
-  .folder-item > div {
-    display: none;
+  .hamburger-btn {
+    display: block;
   }
 
-  .mail-preview {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  .star-icon {
-    margin-left: 10px;
+  .folder-item > div {
+    position: fixed;
+    line-height: 20px;
+    z-index: 1;
+    left: 0;
+
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
   }
 }

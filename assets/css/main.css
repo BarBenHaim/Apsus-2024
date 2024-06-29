@@ -12,7 +12,7 @@
 @import './apps/mail/cmps/MailDetails.css';
 @import './apps/mail/cmps/MailModal.css';
 /* mq */
-@import './apps/mail/mq/folder.css';
+@import './apps/mail/mq/mail-mq.css';
 
 /* @import '/apps/mail/cmps/MailModal.css'; */
 

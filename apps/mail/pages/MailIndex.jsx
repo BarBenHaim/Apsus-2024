@@ -18,7 +18,6 @@ export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(null)
   const [filterbyFolder, setFilterByFolder] = useState(null)
-  const [selectedFolder, setSelectedFloder] = useState(false)
 
   const [filterBy, setFilterBy] = useState({ from: '' })
   const mailId = params.mailId
@@ -107,10 +106,17 @@ export function MailIndex() {
     setIsModalOpen(false)
   }
 
-  if (!mails) return <div>Loading...</div>
+  function toggleFolder() {
+    console.log('fi')
+
+    setIsFolderOpen(!isFolderOpen)
+  }
+
+  if (!mails) return <img src="assets/loader/loader.svg" className="loader" />
   return (
     <section className="mail-layout">
       <MailFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
+
       <MailFolder
         mails={mails}
         onOpenCompose={onOpenCompose}

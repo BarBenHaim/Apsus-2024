@@ -1,3 +1,4 @@
+const { useState } = React
 export function MailFolder({
   onOpenCompose,
   mails,
@@ -5,6 +6,13 @@ export function MailFolder({
   getInbox,
   getStarredMails,
 }) {
+  const [isFolderOpen, setIsFolderOpen] = useState(false)
+
+  function toggleFolder() {
+    console.log('dg')
+
+    setIsFolderOpen((isFolderOpen = true))
+  }
   return (
     <section className="folder-container">
       <div className="btn-container">
@@ -14,6 +22,9 @@ export function MailFolder({
       </div>
 
       <section className="folder-item">
+        <button className="hamburger-btn" onClick={toggleFolder}>
+          <i className="fa-solid fa-bars"></i>
+        </button>
         <div onClick={() => getInbox()}>
           <i className="fa-solid fa-inbox"></i>Inbox
           <p>{mails.length}</p>
