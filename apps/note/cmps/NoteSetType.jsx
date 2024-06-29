@@ -5,6 +5,7 @@ import { NoteTodos } from './dynamic-comps/NoteTodos.jsx'
 import { NoteAudio } from './dynamic-comps/NoteAudio.jsx'
 import { NoteCanvas } from './dynamic-comps/NoteCanvas.jsx'
 import { NoteLocation } from './dynamic-comps/NoteLocation.jsx'
+import { NoteRecording } from './dynamic-comps/NoteRecording.jsx'
 
 export function NoteSetType({ addNote, type }) {
     switch (type) {
@@ -22,5 +23,7 @@ export function NoteSetType({ addNote, type }) {
             return <NoteCanvas addNote={addNote} type={type} />
         case 'NoteLocation':
             return <NoteLocation addNote={addNote} type={type} />
+        case 'NoteRecording':
+            return <NoteRecording addNote={addNote} type={type} />
     }
 }

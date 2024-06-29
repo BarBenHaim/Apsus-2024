@@ -65,6 +65,13 @@ export function NoteFilter({ onSetFilterBy }) {
                 <i className='fa-solid fa-location-dot'></i>
                 <span>Locations</span>
             </button>
+            <button
+                className={`btn-filter ${activeFilter === 'NoteRecording' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('NoteRecording')}
+            >
+                <i className='fa-solid fa-microphone'></i>
+                <span>Recordings</span>
+            </button>
         </section>
     )
 }

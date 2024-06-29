@@ -92,7 +92,6 @@ export function NoteCard({
             >
                 <i className='fa-solid fa-copy'></i>
             </button>
-            {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
             <button className='btn-action'>
                 <Link
                     to={getMailComposeUrl(note)}
@@ -100,6 +99,7 @@ export function NoteCard({
                     onClick={handleLinkClick}
                 ></Link>
             </button>
+            {isColorPickerVisible && <ColorPicker onColorSelect={handleColorSelect} />}
         </article>
     )
 }

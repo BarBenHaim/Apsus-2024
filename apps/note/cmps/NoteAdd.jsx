@@ -41,6 +41,11 @@ export function NoteAdd({ addNote }) {
             placeholder: 'Add Location...',
             icon: <i className='fa-solid fa-location-dot'></i>,
         },
+        {
+            type: 'NoteRecording',
+            placeholder: 'Add Recording...',
+            icon: <i className='fa-solid fa-microphone'></i>,
+        },
     ]
 
     function onSetNoteType(type) {

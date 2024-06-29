@@ -85,9 +85,9 @@ export function NotePreview({ note, onPinChange, onTodoUpdate, isFromDetails = f
                 </ul>
             )}
 
-            {note.type === 'NoteAudio' && note.info.audioUrl && (
+            {note.type === 'NoteRecording' && note.info.audioUrl && (
                 <audio controls className='note-audio'>
-                    <source src={note.info.audioUrl} type='audio/mpeg' />
+                    <source src={note.info.audioUrl} type='audio/wav' />
                     Your browser does not support the audio element.
                 </audio>
             )}
